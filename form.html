@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
-	<link rel="stylesheet" href="quizstyle.css">
+	<link rel="stylesheet" href="style/quizstyle.css">
 </head>
 <body>
 	<div class="container">
@@ -44,35 +44,49 @@
 										<div class="dd3-content">
 											<textarea class="formtextInput singleline" rows="2">單欄位輸入</textarea>
 										</div>
-										<div class="answer"></div>
+										<div class="answer insidefiled single">
+											<textarea class="formtextInput singleinput " rows="1" placeholder="請輸入你的內容..."></textarea>
+										</div>
 									</li>
 									<li class="dd-item">
 										<div class="dd-handle dd3-handle">Drag</div>
 										<div class="dd3-content">
-											<textarea class="formtextInput singleline" rows="4">多欄位輸入</textarea>
+											<textarea class="formtextInput singleline" rows="2">多欄位輸入</textarea>
 										</div>
-										<div class="answer"></div>
+										<div class="answer insidefiled">
+											<textarea class="formtextInput singleinput " rows="4" placeholder="請輸入你的內容..."></textarea>
+										</div>
 									</li>
 									<li class="dd-item">
 										<div class="dd-handle dd3-handle">Drag</div>
 										<div class="dd3-content">
 											<textarea class="formtextInput singleline" rows="2">單選題型</textarea>
 										</div>
-										<div class="answer"></div>
+										<div class="answer insidefiled">
+											<input class="select" type="text" placeholder="請輸入你的選項...">
+											<input class="select" type="text" placeholder="請輸入你的選項...">
+											<input class="select" type="text" placeholder="請輸入你的選項...">
+											<input class="select" type="text" placeholder="請輸入你的選項...">
+										</div>
 									</li>
 									<li class="dd-item">
 										<div class="dd-handle dd3-handle">Drag</div>
 										<div class="dd3-content">
 											<textarea class="formtextInput singleline" rows="4">多選題型</textarea>
 										</div>
-										<div class="answer"></div>
+										<div class="answer insidefiled">
+											<input class="select" type="text" placeholder="請輸入你的選項...">
+											<input class="select" type="text" placeholder="請輸入你的選項...">
+											<input class="select" type="text" placeholder="請輸入你的選項...">
+											<input class="select" type="text" placeholder="請輸入你的選項...">
+										</div>
 									</li>
 									<li class="dd-item">
 										<div class="dd-handle dd3-handle">Drag</div>
 										<div class="dd3-content">
 											<textarea class="formtextInput singleline" rows="4">李斯特量表</textarea>
 										</div>
-										<div class="answer"></div>
+										<div class="answer insidefiled"></div>
 									</li>
 								</ol>
 							</section>
@@ -81,13 +95,17 @@
 				</div>			
 		</article>
 	</div>
-	<script src="https://dl.dropboxusercontent.com/u/50502234/jquery.min.js"></script>
+	<script src="js/classie.js"></script>
 	<script>
-		(function(){
-			$('.dd3-content').on('click', function(){
-				
+		var triggerEl=document.getElementsByClassName("dd3-content");
+
+		for(var i=0; i<triggerEl.length; i++){
+			triggerEl[i].addEventListener('click', function(){
+				var targetEl=this.nextElementSibling;
+				classie.toggle( targetEl,'detail-showout')
 			})
-		})
+		}
+		
 	</script>
 </body>
 </html>
