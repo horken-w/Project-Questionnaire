@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="quizstyle.css">
+</head>
+<body>
+	<div class="container">
+		<header class="banner">
+			<div class="tooling">
+				<div class="toolingwrap">
+					<div class="btnstyle title">單欄位輸入</div>
+					<div class="btnstyle textarea">多欄位輸入</div>
+					<div class="btnstyle radiobox">單選題型</div>
+					<div class="btnstyle checkbox">多選題型</div>
+					<div class="btnstyle likertscale">李斯特量表</div>
+				</div>
+			</div>
+		</header>
+		<article class="content">
+				<div class="formpaper">
+					<form action="" method="post" id="form1">
+						<div class="formcard">
+							<section class="formheader">
+								<div class="textarea">
+									<h1 class="formtitle">
+										<imput class="formtextInput titletextarea" rows="1" autofocus>簡易問卷</imput>
+									</h1>
+									<div class="hrline"></div>
+								</div>
+								<div class="textarea">
+									<h2 class=" formsubtitle">
+										<textarea class="formtextInput subtitletextarea" rows="7">詳細描述</textarea></h2>
+									<div class="hrline"></div>
+								</div>
+							</section>
+							<section class="dd formfields">
+								<h1>問卷類型</h1>
+								<ol class="dd-list">
+									<li class="dd-item">
+										<div class="dd-handle dd3-handle">Drag</div>
+										<div class="dd3-content">
+											<textarea class="formtextInput singleline" rows="2">單欄位輸入</textarea>
+										</div>
+										<div class="answer"></div>
+									</li>
+									<li class="dd-item">
+										<div class="dd-handle dd3-handle">Drag</div>
+										<div class="dd3-content">
+											<textarea class="formtextInput singleline" rows="4">多欄位輸入</textarea>
+										</div>
+										<div class="answer"></div>
+									</li>
+									<li class="dd-item">
+										<div class="dd-handle dd3-handle">Drag</div>
+										<div class="dd3-content">
+											<textarea class="formtextInput singleline" rows="2">單選題型</textarea>
+										</div>
+										<div class="answer"></div>
+									</li>
+									<li class="dd-item">
+										<div class="dd-handle dd3-handle">Drag</div>
+										<div class="dd3-content">
+											<textarea class="formtextInput singleline" rows="4">多選題型</textarea>
+										</div>
+										<div class="answer"></div>
+									</li>
+									<li class="dd-item">
+										<div class="dd-handle dd3-handle">Drag</div>
+										<div class="dd3-content">
+											<textarea class="formtextInput singleline" rows="4">李斯特量表</textarea>
+										</div>
+										<div class="answer"></div>
+									</li>
+								</ol>
+							</section>
+						</div>
+					</form>
+				</div>			
+		</article>
+	</div>
+	<script src="https://dl.dropboxusercontent.com/u/50502234/jquery.min.js"></script>
+	<script>
+		(function(){
+			$('.dd3-content').on('click', function(){
+				
+			})
+		})
+	</script>
+</body>
+</html>
