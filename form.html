@@ -9,6 +9,11 @@
 <body>
 	<div class="container">
 		<header class="banner">
+			<div class="setting">
+				<div class="settingwrap">
+					<div class="btnstyle "><a href="#">預覽</a></div>
+				</div>
+			</div>
 			<div class="tooling">
 				<div class="toolingwrap">
 					<div class="btnstyle title">單欄位輸入</div>
@@ -20,8 +25,8 @@
 			</div>
 		</header>
 		<article class="content">
-				<div class="formpaper">
-					<form action="" method="post" id="form1">
+				<form action="" method="post" id="form1">
+					<div id="formpaper">
 						<div class="formcard">
 							<section class="formheader">
 								<div class="textarea">
@@ -91,11 +96,13 @@
 								</ol>
 							</section>
 						</div>
-					</form>
-				</div>			
+					</div>
+				</form>			
 		</article>
 	</div>
+	<script src="https://dl.dropboxusercontent.com/u/50502234/jquery.min.js"></script>
 	<script src="js/classie.js"></script>
+	<!-- <script src="js/quizjs.js"></script> -->
 	<script>
 		var triggerEl=document.getElementsByClassName("dd3-content");
 
@@ -105,7 +112,6 @@
 				classie.toggle( targetEl,'detail-showout')
 			})
 		}
-		
 	</script>
 </body>
 </html>
