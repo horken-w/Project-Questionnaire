@@ -11,16 +11,18 @@
 		<header class="banner">
 			<div class="setting">
 				<div class="settingwrap">
-					<div class="btnstyle "><a href="#">預覽</a></div>
+					<div class="btnstyle"><a href="#">題組</a></div>
+					<div class="btnstyle"><a href="#">預覽</a></div>
+					<div class="btnstyle"><a href="#">送出</a></div>
 				</div>
 			</div>
 			<div class="tooling">
 				<div class="toolingwrap">
-					<div class="btnstyle title">單欄位輸入</div>
-					<div class="btnstyle textarea">多欄位輸入</div>
-					<div class="btnstyle radiobox">單選題型</div>
-					<div class="btnstyle checkbox">多選題型</div>
-					<div class="btnstyle likertscale">李斯特量表</div>
+					<div class="dd-new-item btnstyle title">單欄位輸入</div>
+					<div class="dd-new-item btnstyle textarea">多欄位輸入</div>
+					<div class="dd-new-item btnstyle radiobox">單選題型</div>
+					<div class="dd-new-item btnstyle checkbox">多選題型</div>
+					<div class="dd-new-item btnstyle likertscale">李斯特量表</div>
 				</div>
 			</div>
 		</header>
@@ -102,16 +104,13 @@
 	</div>
 	<script src="https://dl.dropboxusercontent.com/u/50502234/jquery.min.js"></script>
 	<script src="js/classie.js"></script>
-	<!-- <script src="js/quizjs.js"></script> -->
+	<script src="js/nestable.js"></script>
+	<script src="js/quizjs2.js"></script>
 	<script>
-		var triggerEl=document.getElementsByClassName("dd3-content");
+		$(function(){
 
-		for(var i=0; i<triggerEl.length; i++){
-			triggerEl[i].addEventListener('click', function(){
-				var targetEl=this.nextElementSibling;
-				classie.toggle( targetEl,'detail-showout')
-			})
-		}
+			$('#formpaper').nestable({maxDepth:1})
+		})
 	</script>
 </body>
 </html>
