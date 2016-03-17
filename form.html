@@ -11,18 +11,18 @@
 		<header class="banner">
 			<div class="setting">
 				<div class="settingwrap">
-					<div class="btnstyle"><a href="#">題組</a></div>
-					<div class="btnstyle"><a href="#">預覽</a></div>
-					<div class="btnstyle"><a href="#">送出</a></div>
+					<div id="group" class="btnstyle"><a href="#">題組</a></div>
+					<div id="preview" class="btnstyle"><a href="#">預覽</a></div>
+					<div id="submit" class="btnstyle"><a href="#">送出</a></div>
 				</div>
 			</div>
 			<div class="tooling">
 				<div class="toolingwrap">
-					<div class="dd-new-item btnstyle title">單欄位輸入</div>
-					<div class="dd-new-item btnstyle textarea">多欄位輸入</div>
-					<div class="dd-new-item btnstyle radiobox">單選題型</div>
-					<div class="dd-new-item btnstyle checkbox">多選題型</div>
-					<div class="dd-new-item btnstyle likertscale">李斯特量表</div>
+					<div id="singleline" class="dd-new-item btnstyle">單欄位輸入</div>
+					<div id="textarea" class="dd-new-item btnstyle">多欄位輸入</div>
+					<div id="radiobox" class="dd-new-item btnstyle">單選題型</div>
+					<div id="checkbox" class="dd-new-item btnstyle">多選題型</div>
+					<div id="likertscale" class="dd-new-item btnstyle">李斯特量表</div>
 				</div>
 			</div>
 		</header>
@@ -43,60 +43,127 @@
 									<div class="hrline"></div>
 								</div>
 							</section>
-							<section class="dd formfields">
-								<h1>問卷類型</h1>
+							<h3>問卷類型</h3>
+							<div id="root" class="dd">
 								<ol class="dd-list">
 									<li class="dd-item">
-										<div class="dd-handle dd3-handle">Drag</div>
-										<div class="dd3-content">
-											<textarea class="formtextInput singleline" rows="2">單欄位輸入</textarea>
-										</div>
-										<div class="answer insidefiled single">
-											<textarea class="formtextInput singleinput " rows="1" placeholder="請輸入你的內容..."></textarea>
-										</div>
+										<section class="group">
+											<h1 class="dd-handle">題組</h1>
+											<div class="dd formfields">
+												<ol class="dd-list">
+													<li class="dd-item">
+														<div class="dd-handle dd3-handle">Drag</div>
+														<div class="dd3-content">
+															<textarea class="formtextInput singleline" rows="2">單欄位輸入</textarea>
+														</div>
+														<div class="answer insidefiled single">
+															<textarea class="formtextInput singleinput " rows="1" placeholder="請輸入你的內容..."></textarea>
+														</div>
+													</li>
+													<li class="dd-item">
+														<div class="dd-handle dd3-handle">Drag</div>
+														<div class="dd3-content">
+															<textarea class="formtextInput singleline" rows="2">多欄位輸入</textarea>
+														</div>
+														<div class="answer insidefiled">
+															<textarea class="formtextInput singleinput " rows="4" placeholder="請輸入你的內容..."></textarea>
+														</div>
+													</li>
+													<li class="dd-item">
+														<div class="dd-handle dd3-handle">Drag</div>
+														<div class="dd3-content">
+															<textarea class="formtextInput singleline" rows="2">單選題型</textarea>
+														</div>
+														<div class="answer insidefiled">
+															<input class="select" type="text" placeholder="請輸入你的選項...">
+															<input class="select" type="text" placeholder="請輸入你的選項...">
+															<input class="select" type="text" placeholder="請輸入你的選項...">
+															<input class="select" type="text" placeholder="請輸入你的選項...">
+														</div>
+													</li>
+													<li class="dd-item">
+														<div class="dd-handle dd3-handle">Drag</div>
+														<div class="dd3-content">
+															<textarea class="formtextInput singleline" rows="4">多選題型</textarea>
+														</div>
+														<div class="answer insidefiled">
+															<input class="select" type="text" placeholder="請輸入你的選項...">
+															<input class="select" type="text" placeholder="請輸入你的選項...">
+															<input class="select" type="text" placeholder="請輸入你的選項...">
+															<input class="select" type="text" placeholder="請輸入你的選項...">
+														</div>
+													</li>
+													<li class="dd-item">
+														<div class="dd-handle dd3-handle">Drag</div>
+														<div class="dd3-content">
+															<textarea class="formtextInput singleline" rows="4">李斯特量表</textarea>
+														</div>
+														<div class="answer insidefiled"></div>
+													</li>
+												</ol>
+											</div>
+										</section>
 									</li>
 									<li class="dd-item">
-										<div class="dd-handle dd3-handle">Drag</div>
-										<div class="dd3-content">
-											<textarea class="formtextInput singleline" rows="2">多欄位輸入</textarea>
-										</div>
-										<div class="answer insidefiled">
-											<textarea class="formtextInput singleinput " rows="4" placeholder="請輸入你的內容..."></textarea>
-										</div>
-									</li>
-									<li class="dd-item">
-										<div class="dd-handle dd3-handle">Drag</div>
-										<div class="dd3-content">
-											<textarea class="formtextInput singleline" rows="2">單選題型</textarea>
-										</div>
-										<div class="answer insidefiled">
-											<input class="select" type="text" placeholder="請輸入你的選項...">
-											<input class="select" type="text" placeholder="請輸入你的選項...">
-											<input class="select" type="text" placeholder="請輸入你的選項...">
-											<input class="select" type="text" placeholder="請輸入你的選項...">
-										</div>
-									</li>
-									<li class="dd-item">
-										<div class="dd-handle dd3-handle">Drag</div>
-										<div class="dd3-content">
-											<textarea class="formtextInput singleline" rows="4">多選題型</textarea>
-										</div>
-										<div class="answer insidefiled">
-											<input class="select" type="text" placeholder="請輸入你的選項...">
-											<input class="select" type="text" placeholder="請輸入你的選項...">
-											<input class="select" type="text" placeholder="請輸入你的選項...">
-											<input class="select" type="text" placeholder="請輸入你的選項...">
-										</div>
-									</li>
-									<li class="dd-item">
-										<div class="dd-handle dd3-handle">Drag</div>
-										<div class="dd3-content">
-											<textarea class="formtextInput singleline" rows="4">李斯特量表</textarea>
-										</div>
-										<div class="answer insidefiled"></div>
+										<section class="group">
+											<h1 class="dd-handle">題組</h1>
+											<div class="dd formfields">
+												<ol class="dd-list">
+													<li class="dd-item">
+														<div class="dd-handle dd3-handle">Drag</div>
+														<div class="dd3-content">
+															<textarea class="formtextInput singleline" rows="2">單欄位輸入</textarea>
+														</div>
+														<div class="answer insidefiled single">
+															<textarea class="formtextInput singleinput " rows="1" placeholder="請輸入你的內容..."></textarea>
+														</div>
+													</li>
+													<li class="dd-item">
+														<div class="dd-handle dd3-handle">Drag</div>
+														<div class="dd3-content">
+															<textarea class="formtextInput singleline" rows="2">多欄位輸入</textarea>
+														</div>
+														<div class="answer insidefiled">
+															<textarea class="formtextInput singleinput " rows="4" placeholder="請輸入你的內容..."></textarea>
+														</div>
+													</li>
+													<li class="dd-item">
+														<div class="dd-handle dd3-handle">Drag</div>
+														<div class="dd3-content">
+															<textarea class="formtextInput singleline" rows="2">單選題型</textarea>
+														</div>
+														<div class="answer insidefiled">
+															<input class="select" type="text" placeholder="請輸入你的選項...">
+															<input class="select" type="text" placeholder="請輸入你的選項...">
+															<input class="select" type="text" placeholder="請輸入你的選項...">
+															<input class="select" type="text" placeholder="請輸入你的選項...">
+														</div>
+													</li>
+													<li class="dd-item">
+														<div class="dd-handle dd3-handle">Drag</div>
+														<div class="dd3-content">
+															<textarea class="formtextInput singleline" rows="4">多選題型</textarea>
+														</div>
+														<div class="answer insidefiled">
+															<input class="select" type="text" placeholder="請輸入你的選項...">
+															<input class="select" type="text" placeholder="請輸入你的選項...">
+															<input class="select" type="text" placeholder="請輸入你的選項...">
+															<input class="select" type="text" placeholder="請輸入你的選項...">
+														</div>
+													</li>
+													<li class="dd-item">
+														<div class="dd-handle dd3-handle">Drag</div>
+														<div class="dd3-content">
+															<textarea class="formtextInput singleline" rows="4">李斯特量表</textarea>
+														</div>
+														<div class="answer insidefiled"></div>
+													</li>
+												</ol>
+											</div>
+										</section>
 									</li>
 								</ol>
-							</section>
+							</div>
 						</div>
 					</div>
 				</form>			
@@ -106,11 +173,5 @@
 	<script src="js/classie.js"></script>
 	<script src="js/nestable.js"></script>
 	<script src="js/quizjs2.js"></script>
-	<script>
-		$(function(){
-
-			$('#formpaper').nestable({maxDepth:1})
-		})
-	</script>
 </body>
 </html>

@@ -132,6 +132,40 @@ h1, h2, h3, h4, body{
     width: 100%;
 }
 
+section + h3{
+    margin-left: 2em;
+}
+
+.group{
+    width: 100%;
+    margin-bottom: 1em;
+    margin-left: 1px;
+    border: 2px dashed hsla(0, 0%, 80%, 0.6);
+    will-change: color;
+}
+
+.group > h1{
+    width: 100px;
+    cursor: move;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: -10px;
+    background: hsl(0, 0%, 100%);
+    font-size: 1.5em;
+    border-radius: 5px;
+    border: 3px solid hsl(280, 50%, 60%);
+    box-shadow: 2px 10px 10px -5px hsla(0, 10%, 20%, 0.6);
+}
+
+.group > h1:active{
+    background: hsla(220, 90%, 40%, 0.4);
+    color: hsl(50, 80%, 20%);
+    text-shadow: 0 0 2em 10px hsl(220, 80%, 100%);
+}
+
+.active{
+    border-left: 6px solid hsl(180, 70%, 80%);
+}
 
 /* doMenu */
 
@@ -284,6 +318,15 @@ h1, h2, h3, h4, body{
     background: linear-gradient(bottom, #c8c8c8 0%, #8c8c8c 100%);
 }
 
+section.dd-handle {
+    cursor: move;
+    display: block;
+    background: hsl(0, 0%, 100%);
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
 
 /* tooling */
 
