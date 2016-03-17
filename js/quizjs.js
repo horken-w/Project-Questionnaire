@@ -70,6 +70,9 @@
         this.el.find('.group').map(function(i, val){
           addEvent(val, 'click', _this.bildingSelected, this);
         })
+        this.el.find('.dd3-content').map(function(i, val){
+          addEvent(val, 'click', _this.bildingOToggleWin, this);
+        })
       }
     },
     creatItemListener:function(addbtn){
@@ -118,7 +121,7 @@
           .append($('<textarea rows="1" placeholder="請輸入你的內容..."/>')
           .addClass('formtextInput singleinput ')));
         _li.appendTo($(rootNode));
-        addEvent( _li.find('.dd3-content')[0],'click', active.bildingOpentext, _li.find('.dd3-content')[0]);
+        addEvent( _li.find('.dd3-content')[0],'click', active.bildingOToggleWin, _li.find('.dd3-content')[0]);
 
       }else alert('請先建立/選擇群組在新增內容!!');      
     },
@@ -133,7 +136,7 @@
           .append($('<textarea rows="4" placeholder="請輸入你的內容..."/>')
           .addClass('formtextInput singleinput ')));
         _li.appendTo($(rootNode));
-        addEvent( _li.find('.dd3-content')[0],'click', active.bildingOpentext, _li.find('.dd3-content')[0]);
+        addEvent( _li.find('.dd3-content')[0],'click', active.bildingOToggleWin, _li.find('.dd3-content')[0]);
       }else alert('請先建立/選擇群組在新增內容!!'); 
       
       
@@ -149,7 +152,7 @@
           .append($('<textarea rows="1" placeholder="請輸入你的內容..."/>')
           .addClass('answer insidefiled ')));
         _li.appendTo($(rootNode));
-        addEvent( _li.find('.dd3-content')[0],'click', active.bildingOpentext, _li.find('.dd3-content')[0]);
+        addEvent( _li.find('.dd3-content')[0],'click', active.bildingOToggleWin, _li.find('.dd3-content')[0]);
       }else alert('請先建立/選擇群組在新增內容!!'); 
       
       
@@ -165,7 +168,7 @@
           .append($('<textarea rows="1" placeholder="請輸入你的內容..."/>')
           .addClass('answer insidefiled')));
         _li.appendTo($(rootNode));
-        addEvent( _li.find('.dd3-content')[0],'click', active.bildingOpentext, _li.find('.dd3-content')[0]);
+        addEvent( _li.find('.dd3-content')[0],'click', active.bildingOToggleWin, _li.find('.dd3-content')[0]);
       }else alert('請先建立/選擇群組在新增內容!!'); 
       
     },
@@ -178,7 +181,7 @@
           .addClass('formtextInput singleline').val('李斯特量表')));
         _li.append(divHide.clone());
         _li.appendTo($(rootNode));
-        addEvent( _li.find('.dd3-content')[0],'click', active.bildingOpentext, _li.find('.dd3-content')[0]);
+        addEvent( _li.find('.dd3-content')[0],'click', active.bildingOToggleWin, _li.find('.dd3-content')[0]);
       }else alert('請先建立/選擇群組在新增內容!!'); 
       
     },
@@ -192,8 +195,8 @@
                 document.getElementsByClassName('active')[0].getElementsByClassName('dd-list') ? document.getElementsByClassName('active')[0].getElementsByClassName('dd-list') : false;
      
     },
-    bildingOpentext: function(target){
-      classie.toggle(target.nextSibling, 'detail-showout');
+    bildingOToggleWin: function(target){
+      classie.toggle(target.nextElementSibling, 'detail-showout');
     }
   }
 
