@@ -71,6 +71,11 @@ h1, h2, h3, h4, body{
     box-shadow: 0 0 5px 5px hsla(220, 50%, 100%, 0.6);
 }
 
+.toolingwrap > .btnstyle{
+    padding: 0.8em 2em;  
+    z-index: 5; 
+}
+
 .content {
     width: 100%;
     position: absolute;
@@ -347,11 +352,11 @@ section.dd-handle {
     transition: height 1s;
     overflow: hidden;
 }
-.single.detail-showout{
-    height: 80px;
-}
 .detail-showout{
     height: 120px;
+}
+.single.detail-showout{
+    height: 80px;
 }
 .insidefiled{
     -webkit-box-shadow: inset 0 0 5px hsla(0, 0%, 0%, 0.8);
