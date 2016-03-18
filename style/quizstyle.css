@@ -353,7 +353,8 @@ section.dd-handle {
     margin-top: -5px;
     height: 0;
     transition: height 1s;
-    overflow: hidden;
+    overflow-y: scroll;
+    position: relative;
 }
 .answerwrap{
     display: flex;
@@ -368,14 +369,17 @@ section.dd-handle {
 }
 .answer-title{
     flex: 0 2 20%;
+    order: 1;
 }
 .answer-input{    
     margin: 5px;
     flex: 0 70%;
+    order: 2;
 }
 .answer-del{
     padding-top: 5px;
     flex: 0 3 5%;
+    order: 3;
 }
 .detail-showout{
     height: 120px;
@@ -406,4 +410,8 @@ section.dd-handle {
     cursor: pointer;
     top: 5px;
     right: 10px;
+}
+.dd-item .icon-add{
+    position: fixed;
+    top: 0;
 }
