@@ -66,7 +66,7 @@
       id.map(function(i, val){
         _this.creatItemListener(val.id.hashtag());
       });
-
+      
       if(this.el.find('.group').length > 0){
         this.el.find('.group').first().addClass('active');
         this.el.find('.group').map(function(i, val){
@@ -131,7 +131,6 @@
           .addClass('formtextInput singleinput ')));
         _li.appendTo($(rootNode));
         addEvent( _li.find('.dd3-content')[0],'click', active.bildingOToggleWin, _li.find('.dd3-content')[0]);
-
       }else alert('請先建立/選擇群組在新增內容!!');      
     },
     multInputCreat:function(active){
@@ -149,8 +148,6 @@
         _li.appendTo($(rootNode));
         addEvent( _li.find('.dd3-content')[0],'click', active.bildingOToggleWin, _li.find('.dd3-content')[0]);
       }else alert('請先建立/選擇群組在新增內容!!'); 
-      
-      
     },
     radioBoxCreat:function(active){
       var rootNode=active.findParentExites(),
@@ -167,8 +164,6 @@
         _li.appendTo($(rootNode));
         addEvent( _li.find('.dd3-content')[0],'click', active.bildingOToggleWin, _li.find('.dd3-content')[0]);
       }else alert('請先建立/選擇群組在新增內容!!'); 
-      
-      
     },
     checkBoxCreat:function(active){
       var rootNode=active.findParentExites(),
@@ -200,7 +195,26 @@
         _li.appendTo($(rootNode));
         addEvent( _li.find('.dd3-content')[0],'click', active.bildingOToggleWin, _li.find('.dd3-content')[0]);
       }else alert('請先建立/選擇群組在新增內容!!'); 
-      
+    },
+    subTextareaCreate: function(target){
+      var nodes=$('<div class="answerwrap"/>'),
+          addCreate=$(createEl('div', ['icon-add', 'answer-add']));
+      if (target !== undefined){
+        nodes.append(iconRemove);
+        nodes.append(addCreate);
+        nodes.append($('<label/>', {
+          class: 'text answer-title',
+          for: 'answer',
+          text: '選項: '
+        }))
+        nodes.append($('<input/>', {
+          class: 'select answer-input',
+          type: 'text',
+          placeholder: '請輸入你的選項... '
+        }))
+      }      
+
+      return nodes;
     },
     bildingSelected:function(e){ //select group
       var _this=e;
