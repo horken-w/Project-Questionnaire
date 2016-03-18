@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="style/quizstyle.css">
 </head>
 <body>
@@ -22,7 +23,7 @@
 					<div id="textarea" class="dd-new-item btnstyle">多欄位輸入</div>
 					<div id="radiobox" class="dd-new-item btnstyle">單選題型</div>
 					<div id="checkbox" class="dd-new-item btnstyle">多選題型</div>
-					<div id="likertscale" class="dd-new-item btnstyle">李斯特量表</div>
+					<div id="likertscale" class="dd-new-item btnstyle">李克特量表</div>
 				</div>
 			</div>
 		</header>
@@ -48,10 +49,13 @@
 								<ol class="dd-list">
 									<li class="dd-item">
 										<section class="group">
-											<h1 class="dd-handle">題組</h1>
+											<h1 class="dd-handle"><input class="formtextInput titletextarea" rows="1" autofocus value="題組名稱"></h1>
 											<div class="dd formfields">
 												<ol class="dd-list">
-													<li class="dd-item">
+													<li class="dd-item">													
+														<div class="icon-btn icon-del">
+															<i class="material-icons icon-small icon-color">delete</i>
+														</div>
 														<div class="dd-handle dd3-handle">Drag</div>
 														<div class="dd3-content">
 															<textarea class="formtextInput singleline" rows="2">單欄位輸入</textarea>
@@ -61,6 +65,9 @@
 														</div>
 													</li>
 													<li class="dd-item">
+														<div class="icon-btn icon-del">
+															<i class="material-icons icon-small icon-color">delete</i>
+														</div>
 														<div class="dd-handle dd3-handle">Drag</div>
 														<div class="dd3-content">
 															<textarea class="formtextInput singleline" rows="2">多欄位輸入</textarea>
@@ -70,35 +77,109 @@
 														</div>
 													</li>
 													<li class="dd-item">
+														<div class="icon-btn icon-del">
+															<i class="material-icons icon-small icon-color">delete</i>
+														</div>
 														<div class="dd-handle dd3-handle">Drag</div>
 														<div class="dd3-content">
 															<textarea class="formtextInput singleline" rows="2">單選題型</textarea>
 														</div>
 														<div class="answer insidefiled">
-															<input class="select" type="text" placeholder="請輸入你的選項...">
-															<input class="select" type="text" placeholder="請輸入你的選項...">
-															<input class="select" type="text" placeholder="請輸入你的選項...">
-															<input class="select" type="text" placeholder="請輸入你的選項...">
+															<div class="answerwrap">
+																<label for="answer" class="text answer-title">選項1: </label><input class="select answer-input" type="text" placeholder="請輸入你的選項...">
+																<div class="icon-del answer-del">
+																	<i class="material-icons icon-small icon-color">delete</i>
+																</div>
+															</div>
+															<div class="answerwrap">
+																<label for="answer" class="text answer-title">選項2: </label><input class="select answer-input" type="text" placeholder="請輸入你的選項...">
+																<div class="icon-del answer-del">
+																	<i class="material-icons icon-small icon-color">delete</i>
+																</div>
+															</div>
+															<div class="answerwrap">
+																<label for="answer" class="text answer-title">選項3: </label><input class="select answer-input" type="text" placeholder="請輸入你的選項...">
+																<div class="icon-del answer-del">
+																	<i class="material-icons icon-small icon-color">delete</i>
+																</div>
+															</div>
+															<div class="answerwrap">
+																<label for="answer" class="text answer-title">選項4: </label><input class="select answer-input" type="text" placeholder="請輸入你的選項...">
+																<div class="icon-del answer-del">
+																	<i class="material-icons icon-small icon-color">delete</i>
+																</div>
+															</div>
 														</div>
 													</li>
 													<li class="dd-item">
+														<div class="icon-btn icon-del">
+															<i class="material-icons icon-small icon-color">delete</i>
+														</div>
 														<div class="dd-handle dd3-handle">Drag</div>
 														<div class="dd3-content">
 															<textarea class="formtextInput singleline" rows="4">多選題型</textarea>
-														</div>
+														</div>														
 														<div class="answer insidefiled">
-															<input class="select" type="text" placeholder="請輸入你的選項...">
-															<input class="select" type="text" placeholder="請輸入你的選項...">
-															<input class="select" type="text" placeholder="請輸入你的選項...">
-															<input class="select" type="text" placeholder="請輸入你的選項...">
+															<div class="answerwrap">
+																<label for="answer" class="text answer-title">選項1: </label><input class="select answer-input" type="text" placeholder="請輸入你的選項...">
+																<div class="icon-del answer-del">
+																	<i class="material-icons icon-small icon-color">delete</i>
+																</div>
+															</div>
+															<div class="answerwrap">
+																<label for="answer" class="text answer-title">選項2: </label><input class="select answer-input" type="text" placeholder="請輸入你的選項...">
+																<div class="icon-del answer-del">
+																	<i class="material-icons icon-small icon-color">delete</i>
+																</div>
+															</div>
+															<div class="answerwrap">
+																<label for="answer" class="text answer-title">選項3: </label><input class="select answer-input" type="text" placeholder="請輸入你的選項...">
+																<div class="icon-del answer-del">
+																	<i class="material-icons icon-small icon-color">delete</i>
+																</div>
+															</div>
+															<div class="answerwrap">
+																<label for="answer" class="text answer-title">選項4: </label><input class="select answer-input" type="text" placeholder="請輸入你的選項...">
+																<div class="icon-del answer-del">
+																	<i class="material-icons icon-small icon-color">delete</i>
+																</div>
+															</div>
 														</div>
 													</li>
 													<li class="dd-item">
+														<div class="icon-btn icon-del">
+															<i class="material-icons icon-small icon-color">delete</i>
+														</div>
 														<div class="dd-handle dd3-handle">Drag</div>
 														<div class="dd3-content">
-															<textarea class="formtextInput singleline" rows="4">李斯特量表</textarea>
+															<textarea class="formtextInput singleline" rows="4">李克特量表</textarea>
 														</div>
-														<div class="answer insidefiled"></div>
+														<div class="answer insidefiled">
+															<div class="answerwrap">
+																<label for="answer" class="text answer-title">選項1: </label><input class="select answer-input" type="text" placeholder="請輸入你的選項...">
+																<div class="icon-del answer-del">
+																	<i class="material-icons icon-small icon-color">delete</i>
+																</div>
+															</div>
+															<div class="answerwrap">
+																<label for="answer" class="text answer-title">選項2: </label><input class="select answer-input" type="text" placeholder="請輸入你的選項...">
+																<div class="icon-del answer-del">
+																	<i class="material-icons icon-small icon-color">delete</i>
+																</div>
+															</div>
+															<div class="answerwrap">
+																<label for="answer" class="text answer-title">選項3: </label><input class="select answer-input" type="text" placeholder="請輸入你的選項...">
+																<div class="icon-del answer-del">
+																	<i class="material-icons icon-small icon-color">delete</i>
+																</div>
+															</div>
+															<div class="answerwrap">
+																<label for="answer" class="text answer-title">選項4: </label><input class="select answer-input" type="text" placeholder="請輸入你的選項...">
+																<div class="icon-del answer-del">
+																	<i class="material-icons icon-small icon-color">delete</i>
+																</div>
+															</div>
+														</div>
 													</li>
 												</ol>
 											</div>
@@ -106,10 +187,13 @@
 									</li>
 									<li class="dd-item">
 										<section class="group">
-											<h1 class="dd-handle">題組</h1>
+											<h1 class="dd-handle"><input class="formtextInput titletextarea" rows="1" autofocus value="題組名稱"></h1>
 											<div class="dd formfields">
 												<ol class="dd-list">
 													<li class="dd-item">
+														<div class="icon-btn icon-del">
+															<i class="material-icons icon-small icon-color">delete</i>
+														</div>
 														<div class="dd-handle dd3-handle">Drag</div>
 														<div class="dd3-content">
 															<textarea class="formtextInput singleline" rows="2">單欄位輸入</textarea>
@@ -119,6 +203,9 @@
 														</div>
 													</li>
 													<li class="dd-item">
+														<div class="icon-btn icon-del">
+															<i class="material-icons icon-small icon-color">delete</i>
+														</div>
 														<div class="dd-handle dd3-handle">Drag</div>
 														<div class="dd3-content">
 															<textarea class="formtextInput singleline" rows="2">多欄位輸入</textarea>
@@ -128,35 +215,112 @@
 														</div>
 													</li>
 													<li class="dd-item">
+														<div class="icon-btn icon-del">
+															<i class="material-icons icon-small icon-color">delete</i>
+														</div>
 														<div class="dd-handle dd3-handle">Drag</div>
 														<div class="dd3-content">
 															<textarea class="formtextInput singleline" rows="2">單選題型</textarea>
 														</div>
+														
 														<div class="answer insidefiled">
-															<input class="select" type="text" placeholder="請輸入你的選項...">
-															<input class="select" type="text" placeholder="請輸入你的選項...">
-															<input class="select" type="text" placeholder="請輸入你的選項...">
-															<input class="select" type="text" placeholder="請輸入你的選項...">
+															<div class="answerwrap">
+																<label for="answer" class="text answer-title">選項1: </label><input class="select answer-input" type="text" placeholder="請輸入你的選項...">
+																<div class="icon-del answer-del">
+																	<i class="material-icons icon-small icon-color">delete</i>
+																</div>
+															</div>
+															<div class="answerwrap">
+																<label for="answer" class="text answer-title">選項2: </label><input class="select answer-input" type="text" placeholder="請輸入你的選項...">
+																<div class="icon-del answer-del">
+																	<i class="material-icons icon-small icon-color">delete</i>
+																</div>
+															</div>
+															<div class="answerwrap">
+																<label for="answer" class="text answer-title">選項3: </label><input class="select answer-input" type="text" placeholder="請輸入你的選項...">
+																<div class="icon-del answer-del">
+																	<i class="material-icons icon-small icon-color">delete</i>
+																</div>
+															</div>
+															<div class="answerwrap">
+																<label for="answer" class="text answer-title">選項4: </label><input class="select answer-input" type="text" placeholder="請輸入你的選項...">
+																<div class="icon-del answer-del">
+																	<i class="material-icons icon-small icon-color">delete</i>
+																</div>
+															</div>
 														</div>
 													</li>
 													<li class="dd-item">
+														<div class="icon-btn icon-del">
+															<i class="material-icons icon-small icon-color">delete</i>
+														</div>
 														<div class="dd-handle dd3-handle">Drag</div>
 														<div class="dd3-content">
 															<textarea class="formtextInput singleline" rows="4">多選題型</textarea>
 														</div>
+														
 														<div class="answer insidefiled">
-															<input class="select" type="text" placeholder="請輸入你的選項...">
-															<input class="select" type="text" placeholder="請輸入你的選項...">
-															<input class="select" type="text" placeholder="請輸入你的選項...">
-															<input class="select" type="text" placeholder="請輸入你的選項...">
+															<div class="answerwrap">
+																<label for="answer" class="text answer-title">選項1: </label><input class="select answer-input" type="text" placeholder="請輸入你的選項...">
+																<div class="icon-del answer-del">
+																	<i class="material-icons icon-small icon-color">delete</i>
+																</div>
+															</div>
+															<div class="answerwrap">
+																<label for="answer" class="text answer-title">選項2: </label><input class="select answer-input" type="text" placeholder="請輸入你的選項...">
+																<div class="icon-del answer-del">
+																	<i class="material-icons icon-small icon-color">delete</i>
+																</div>
+															</div>
+															<div class="answerwrap">
+																<label for="answer" class="text answer-title">選項3: </label><input class="select answer-input" type="text" placeholder="請輸入你的選項...">
+																<div class="icon-del answer-del">
+																	<i class="material-icons icon-small icon-color">delete</i>
+																</div>
+															</div>
+															<div class="answerwrap">
+																<label for="answer" class="text answer-title">選項4: </label><input class="select answer-input" type="text" placeholder="請輸入你的選項...">
+																<div class="icon-del answer-del">
+																	<i class="material-icons icon-small icon-color">delete</i>
+																</div>
+															</div>
 														</div>
 													</li>
 													<li class="dd-item">
+														<div class="icon-btn icon-del">
+															<i class="material-icons icon-small icon-color">delete</i>
+														</div>
 														<div class="dd-handle dd3-handle">Drag</div>
 														<div class="dd3-content">
-															<textarea class="formtextInput singleline" rows="4">李斯特量表</textarea>
+															<textarea class="formtextInput singleline" rows="4">李克特量表</textarea>
 														</div>
-														<div class="answer insidefiled"></div>
+														
+														<div class="answer insidefiled">
+															<div class="answerwrap">
+																<label for="answer" class="text answer-title">選項1: </label><input class="select answer-input" type="text" placeholder="請輸入你的選項...">
+																<div class="icon-del answer-del">
+																	<i class="material-icons icon-small icon-color">delete</i>
+																</div>
+															</div>
+															<div class="answerwrap">
+																<label for="answer" class="text answer-title">選項2: </label><input class="select answer-input" type="text" placeholder="請輸入你的選項...">
+																<div class="icon-del answer-del">
+																	<i class="material-icons icon-small icon-color">delete</i>
+																</div>
+															</div>
+															<div class="answerwrap">
+																<label for="answer" class="text answer-title">選項3: </label><input class="select answer-input" type="text" placeholder="請輸入你的選項...">
+																<div class="icon-del answer-del">
+																	<i class="material-icons icon-small icon-color">delete</i>
+																</div>
+															</div>
+															<div class="answerwrap">
+																<label for="answer" class="text answer-title">選項4: </label><input class="select answer-input" type="text" placeholder="請輸入你的選項...">
+																<div class="icon-del answer-del">
+																	<i class="material-icons icon-small icon-color">delete</i>
+																</div>
+															</div>
+														</div>
 													</li>
 												</ol>
 											</div>

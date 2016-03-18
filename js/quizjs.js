@@ -52,10 +52,12 @@
         itemClass: 'dd-item',
         dragClass: 'dd-dragel',
         handleClass: 'dd-handle',
+        deletebtn: 'icon-del'
       };
       var divDrag=$(createEl('div', [items.handleClass, 'dd3-handle'])),
           divTxt=$(createEl('div', 'dd3-content')),
-          divHide=$(createEl('div', ['answer', 'insidefiled', 'single']));
+          divHide=$(createEl('div', ['answer', 'insidefiled', 'single'])),
+          iconRemove=$(createEl('div', 'icon-btn')).append($(createEl('i', ['material-icons', 'icon-small', 'icon-color'])).text('delete'));
 
   quizsBox.prototype={
     init: function(){
@@ -65,19 +67,24 @@
         _this.creatItemListener(val.id.hashtag());
       });
 
-      if(this.el.find('.group').length !== 0){
+      if(this.el.find('.group').length > 0){
         this.el.find('.group').first().addClass('active');
         this.el.find('.group').map(function(i, val){
           addEvent(val, 'click', _this.bildingSelected, this);
         })
-        this.el.find('.dd3-content').map(function(i, val){
-          addEvent(val, 'click', _this.bildingOToggleWin, this);
-        })
+        if(this.el.find('.dd-item').length>0){
+          this.el.find(items.deletebtn.dot()).map(function(i, val){
+            addEvent(val, 'click', _this.removeItem, this.parentElement);
+          })
+          this.el.find('.dd3-content').map(function(i, val){
+            addEvent(val, 'click', _this.bildingOToggleWin, this);
+          })
+        }
+        
       }
     },
     creatItemListener:function(addbtn){
       var _this=this, active=$(addbtn);
-
       var _li=createEl(items.itemNodeName, items.itemClass);
 
       switch (addbtn){
@@ -114,6 +121,8 @@
       var rootNode=active.findParentExites(),
           _li=$(createEl(items.itemNodeName, items.itemClass));
       if(rootNode){
+        _li.append(iconRemove.clone());
+        addEvent(_li[0].children[0], 'click', active.removeItem, _li);
         _li.append(divDrag.clone().text('drag'));
         _li.append(divTxt.clone().append($('<textarea rows="2"/>')
           .addClass('formtextInput singleline').val('單欄位輸入')));
@@ -129,6 +138,8 @@
       var rootNode=active.findParentExites(),
           _li=$(createEl(items.itemNodeName, items.itemClass));
       if(rootNode){
+        _li.append(iconRemove.clone());
+        addEvent(_li[0].children[0], 'click', active.removeItem, _li);
         _li.append(divDrag.clone().text('drag'));
         _li.append(divTxt.clone().append($('<textarea rows="2"/>')
           .addClass('formtextInput singleline').val('多欄位輸入')));
@@ -145,6 +156,8 @@
       var rootNode=active.findParentExites(),
           _li=$(createEl(items.itemNodeName, items.itemClass));
       if(rootNode){
+        _li.append(iconRemove.clone());
+        addEvent(_li[0].children[0], 'click', active.removeItem, _li);
         _li.append(divDrag.clone().text('drag'));
         _li.append(divTxt.clone().append($('<textarea rows="2"/>')
           .addClass('formtextInput singleline').val('單選題型')));
@@ -161,6 +174,8 @@
       var rootNode=active.findParentExites(),
           _li=$(createEl(items.itemNodeName, items.itemClass));
       if(rootNode){
+        _li.append(iconRemove.clone());
+        addEvent(_li[0].children[0], 'click', active.removeItem, _li);
         _li.append(divDrag.clone().text('drag'));
         _li.append(divTxt.clone().append($('<textarea rows="4"/>')
           .addClass('formtextInput singleline').val('多選題型')));
@@ -176,16 +191,18 @@
       var rootNode=active.findParentExites(),
           _li=$(createEl(items.itemNodeName, items.itemClass));
       if(rootNode){
+        _li.append(iconRemove.clone());
+        addEvent(_li[0].children[0], 'click', active.removeItem, _li);
         _li.append(divDrag.clone().text('drag'));
         _li.append(divTxt.clone().append($('<textarea rows="2"/>')
-          .addClass('formtextInput singleline').val('李斯特量表')));
+          .addClass('formtextInput singleline').val('李克特量表')));
         _li.append(divHide.clone());
         _li.appendTo($(rootNode));
         addEvent( _li.find('.dd3-content')[0],'click', active.bildingOToggleWin, _li.find('.dd3-content')[0]);
       }else alert('請先建立/選擇群組在新增內容!!'); 
       
     },
-    bildingSelected:function(e){
+    bildingSelected:function(e){ //select group
       var _this=e;
       $('.group').removeClass('active');
       $(_this).addClass('active');
@@ -195,8 +212,11 @@
                 document.getElementsByClassName('active')[0].getElementsByClassName('dd-list') ? document.getElementsByClassName('active')[0].getElementsByClassName('dd-list') : false;
      
     },
-    bildingOToggleWin: function(target){
+    bildingOToggleWin: function(target){ //content open/close
       classie.toggle(target.nextElementSibling, 'detail-showout');
+    },
+    removeItem: function(item){
+      item.remove();
     }
   }
 
