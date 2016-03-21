@@ -53,7 +53,8 @@
         dragClass: 'dd-dragel',
         handleClass: 'dd-handle',
         contentClass: 'dd3-content',
-        deletebtn: 'icon-del'
+        deletebtn: 'icon-del',
+        createbtn: 'icon-add'
       };
       var divDrag=$(createEl('div', [items.handleClass, 'dd3-handle'])),
           divTxt=$(createEl('div', 'dd3-content')),
@@ -76,6 +77,9 @@
         if(this.el.find(items.itemClass.dot()).length>0){
           this.el.find(items.deletebtn.dot()).map(function(i, val){
             addEvent(val, 'click', _this.removeItem, this.parentElement);
+          })
+          this.el.find(items.createbtn.dot()).map(function(i, val){
+            addEvent(val, 'click', _this.subTextareaCreate, this.parentElement.parentElement);
           })
           this.el.find(items.contentClass.dot()).map(function(i, val){
             addEvent(val, 'click', _this.bildingOToggleWin, this);
@@ -164,7 +168,7 @@
         _li.append(divTxt.clone().append($('<textarea rows="2"/>')
           .addClass('formtextInput singleline').val('單選題型')));
         _li.append(divHide.clone());
-        _li.find('.answer').append(active.subTextareaCreate(active, _li.find('.answer')));
+        _li.find('.answer').append(active.subTextareaCreate(_li.find('.answer')[0], active));
         _li.appendTo($(rootNode));
         addEvent( _li.find(items.contentClass.dot())[0],'click', active.bildingOToggleWin, _li.find(items.contentClass.dot())[0]);
       }else alert('請先建立/選擇群組在新增內容!!'); 
@@ -179,7 +183,7 @@
         _li.append(divTxt.clone().append($('<textarea rows="4"/>')
           .addClass('formtextInput singleline').val('多選題型')));
         _li.append(divHide.clone());
-        _li.find('.answer').append(active.subTextareaCreate(active, _li.find('.answer')));
+        _li.find('.answer').append(active.subTextareaCreate(_li.find('.answer')[0], active));
         _li.appendTo($(rootNode));
         addEvent( _li.find(items.contentClass.dot())[0],'click', active.bildingOToggleWin, _li.find(items.contentClass.dot())[0]);
       }else alert('請先建立/選擇群組在新增內容!!'); 
@@ -195,20 +199,22 @@
         _li.append(divTxt.clone().append($('<textarea rows="2"/>')
           .addClass('formtextInput singleline').val('李克特量表')));
         _li.append(divHide.clone());
-        _li.find('.answer').append(active.subTextareaCreate(active, _li.find('.answer')));
+        _li.find('.answer').append(active.subTextareaCreate(_li.find('.answer')[0], active));
         _li.appendTo($(rootNode));
         addEvent( _li.find(items.contentClass.dot())[0],'click', active.bildingOToggleWin, _li.find(items.contentClass.dot())[0]);
       }else alert('請先建立/選擇群組在新增內容!!'); 
     },
-    subTextareaCreate: function(active ,target){
+    subTextareaCreate: function(target ,active){
       var nodes=$('<div class="answerwrap"/>'),
           addCreate=$(createEl('div', ['icon-add', 'answer-add'])).append($(createEl('i', ['material-icons', 'icon-small', 'icon-color'])).text('create')),
           delCreate=$(createEl('div', ['icon-del', 'answer-del'])).append($(createEl('i', ['material-icons', 'icon-small', 'icon-color'])).text('delete'));
-      if (target !== undefined){
+      var quiz=new quizsBox();
+
+      if (active === undefined){
+        addEvent(addCreate[0], 'click', quiz.subTextareaCreate, target);
+        addEvent(delCreate[0], 'click', quiz.removeItem, target.lastChild);
         nodes.append(delCreate);
         nodes.append(addCreate);
-        addEvent(addCreate[0], 'click', active.subTextareaCreate, target);
-        addEvent(delCreate[0], 'click', active.removeItem, target[0].children);
         nodes.append($('<label/>', {
           class: 'text answer-title',
           for: 'answer',
@@ -220,6 +226,8 @@
           placeholder: '請輸入你的選項... '
         })).appendTo(target);
       }else{
+        addEvent(addCreate[0], 'click', active.subTextareaCreate, target);
+        addEvent(delCreate[0], 'click', active.removeItem, target.children);
         nodes.append(delCreate);
         nodes.append(addCreate);
         nodes.append($('<label/>', {
@@ -249,7 +257,7 @@
       classie.toggle(target.nextElementSibling, 'detail-showout');
     },
     removeItem: function(item){
-    var e = typeof item[0] ==='object' ? e=item[0] : e=item;
+      var e = typeof item[0] ==='object' ? e=item[0] : e=item;
 
       e.parentElement.children.length-1 > 0 ? item.remove(): 
         alert('題目無法全部刪除!');
