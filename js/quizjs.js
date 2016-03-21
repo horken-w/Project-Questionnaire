@@ -52,6 +52,7 @@
         itemClass: 'dd-item',
         dragClass: 'dd-dragel',
         handleClass: 'dd-handle',
+        contentClass: 'dd3-content',
         deletebtn: 'icon-del'
       };
       var divDrag=$(createEl('div', [items.handleClass, 'dd3-handle'])),
@@ -66,17 +67,17 @@
       id.map(function(i, val){
         _this.creatItemListener(val.id.hashtag());
       });
-
-      if(this.el.find('.group').length > 0){
-        this.el.find('.group').first().addClass('active');
-        this.el.find('.group').map(function(i, val){
+      
+      if(this.el.find(items.addGroupbtn.dot()).length > 0){
+        this.el.find(items.addGroupbtn.dot()).first().addClass('active');
+        this.el.find(items.addGroupbtn.dot()).map(function(i, val){
           addEvent(val, 'click', _this.bildingSelected, this);
         })
-        if(this.el.find('.dd-item').length>0){
+        if(this.el.find(items.itemClass.dot()).length>0){
           this.el.find(items.deletebtn.dot()).map(function(i, val){
             addEvent(val, 'click', _this.removeItem, this.parentElement);
           })
-          this.el.find('.dd3-content').map(function(i, val){
+          this.el.find(items.contentClass.dot()).map(function(i, val){
             addEvent(val, 'click', _this.bildingOToggleWin, this);
           })
         }
@@ -134,7 +135,7 @@
           .append($('<textarea rows="1" placeholder="請輸入你的內容..."/>')
           .addClass('formtextInput singleinput ')));
         _li.appendTo($(rootNode));
-        addEvent( _li.find('.dd3-content')[0],'click', active.bildingOToggleWin, _li.find('.dd3-content')[0]);
+        addEvent( _li.find(items.contentClass.dot())[0],'click', active.bildingOToggleWin, _li.find(items.contentClass.dot())[0]);
       }else alert('請先建立/選擇群組在新增內容!!');      
     },
     multInputCreat:function(active){
@@ -150,7 +151,7 @@
           .append($('<textarea rows="4" placeholder="請輸入你的內容..."/>')
           .addClass('formtextInput singleinput ')));
         _li.appendTo($(rootNode));
-        addEvent( _li.find('.dd3-content')[0],'click', active.bildingOToggleWin, _li.find('.dd3-content')[0]);
+        addEvent( _li.find(items.contentClass.dot())[0],'click', active.bildingOToggleWin, _li.find(items.contentClass.dot())[0]);
       }else alert('請先建立/選擇群組在新增內容!!'); 
     },
     radioBoxCreat:function(active){
@@ -165,7 +166,7 @@
         _li.append(divHide.clone());
         _li.find('.answer').append(active.subTextareaCreate(active, _li.find('.answer')));
         _li.appendTo($(rootNode));
-        addEvent( _li.find('.dd3-content')[0],'click', active.bildingOToggleWin, _li.find('.dd3-content')[0]);
+        addEvent( _li.find(items.contentClass.dot())[0],'click', active.bildingOToggleWin, _li.find(items.contentClass.dot())[0]);
       }else alert('請先建立/選擇群組在新增內容!!'); 
     },
     checkBoxCreat:function(active){
@@ -180,7 +181,7 @@
         _li.append(divHide.clone());
         _li.find('.answer').append(active.subTextareaCreate(active, _li.find('.answer')));
         _li.appendTo($(rootNode));
-        addEvent( _li.find('.dd3-content')[0],'click', active.bildingOToggleWin, _li.find('.dd3-content')[0]);
+        addEvent( _li.find(items.contentClass.dot())[0],'click', active.bildingOToggleWin, _li.find(items.contentClass.dot())[0]);
       }else alert('請先建立/選擇群組在新增內容!!'); 
       
     },
@@ -196,7 +197,7 @@
         _li.append(divHide.clone());
         _li.find('.answer').append(active.subTextareaCreate(active, _li.find('.answer')));
         _li.appendTo($(rootNode));
-        addEvent( _li.find('.dd3-content')[0],'click', active.bildingOToggleWin, _li.find('.dd3-content')[0]);
+        addEvent( _li.find(items.contentClass.dot())[0],'click', active.bildingOToggleWin, _li.find(items.contentClass.dot())[0]);
       }else alert('請先建立/選擇群組在新增內容!!'); 
     },
     subTextareaCreate: function(active ,target){
@@ -236,7 +237,7 @@
     },
     bildingSelected:function(e){ //select group
       var _this=e;
-      $('.group').removeClass('active');
+      $(items.addGroupbtn.dot()).removeClass('active');
       $(_this).addClass('active');
     },
     findParentExites: function(){
