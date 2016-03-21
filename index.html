@@ -43,6 +43,33 @@
 										<textarea class="formtextInput subtitletextarea" rows="7">詳細描述</textarea></h2>
 									<div class="hrline"></div>
 								</div>
+								<div class="group boxsize">
+									<div>
+										<label for="persondetail">是否填寫個資：</label>
+										<input type="radio" class="formtextInput"  name="quiztype" value="anonymous">匿名資料
+										<input type="radio" class="formtextInput"  name="quiztype" value="person">填寫資料
+									</div>
+									<div>
+										<div class="persondetail">身分所需欄位<small>(勾選皆為必填)</small></div>
+										<div class="detailstyle">
+											<input type="checkbox"> 姓名
+											<input type="checkbox"> 電子郵件
+											<input type="checkbox"> 性別
+											<input type="checkbox"> 身分證字號
+											<input type="checkbox"> 生日
+											<input type="checkbox"> 連絡電話
+											<input type="checkbox"> 聯絡地址
+										</div>
+										<div class="detailstyle">
+											<input type="checkbox"> 婚姻狀況
+											<input type="checkbox"> 行業列別
+											<input type="checkbox"> 職務類別
+											<input type="checkbox"> 學歷
+											<input type="checkbox"> 年收入
+											<input type="checkbox"> 興趣與喜好
+										</div>
+									</div>
+								</div>
 							</section>
 							<h3>問卷類型</h3>
 							<div id="root" class="dd">
@@ -82,14 +109,16 @@
 														</div>
 														<div class="dd-handle dd3-handle">Drag</div>
 														<div class="dd3-content">
-															<textarea class="formtextInput singleline" rows="2">單選題型</textarea>
-														</div>
+															<textarea class="formtextInput singleline" rows="4">多選題型</textarea>
+														</div>														
 														<div class="answer insidefiled">
 															<div class="answerwrap">
 																<div class="icon-del answer-del">
 																	<i class="material-icons icon-small icon-color">delete</i>
 																</div>
-																<div class="icon-add answer-add"></div>
+																<div class="icon-add answer-add">
+																	<i class="material-icons icon-small icon-color">create</i>
+																</div>
 																<label for="answer" class="text answer-title">選項: </label>
 																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
 															</div>
@@ -97,7 +126,9 @@
 																<div class="icon-del answer-del">
 																	<i class="material-icons icon-small icon-color">delete</i>
 																</div>
-																<div class="icon-add answer-add"></div>
+																<div class="icon-add answer-add">
+																	<i class="material-icons icon-small icon-color">create</i>
+																</div>
 																<label for="answer" class="text answer-title">選項: </label>
 																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
 															</div>
@@ -105,15 +136,9 @@
 																<div class="icon-del answer-del">
 																	<i class="material-icons icon-small icon-color">delete</i>
 																</div>
-																<div class="icon-add answer-add"></div>
-																<label for="answer" class="text answer-title">選項: </label>
-																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
-															</div>
-															<div class="answerwrap">
-																<div class="icon-del answer-del">
-																	<i class="material-icons icon-small icon-color">delete</i>
+																<div class="icon-add answer-add">
+																	<i class="material-icons icon-small icon-color">create</i>
 																</div>
-																<div class="icon-add answer-add"></div>
 																<label for="answer" class="text answer-title">選項: </label>
 																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
 															</div>
@@ -135,49 +160,6 @@
 														</div>
 														<div class="dd-handle dd3-handle">Drag</div>
 														<div class="dd3-content">
-															<textarea class="formtextInput singleline" rows="4">多選題型</textarea>
-														</div>														
-														<div class="answer insidefiled">
-															<div class="answerwrap">
-																<div class="icon-del answer-del">
-																	<i class="material-icons icon-small icon-color">delete</i>
-																</div>
-																<div class="icon-add answer-add"></div>
-																<label for="answer" class="text answer-title">選項: </label>
-																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
-															</div>
-															<div class="answerwrap">
-																<div class="icon-del answer-del">
-																	<i class="material-icons icon-small icon-color">delete</i>
-																</div>
-																<div class="icon-add answer-add"></div>
-																<label for="answer" class="text answer-title">選項: </label>
-																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
-															</div>
-															<div class="answerwrap">
-																<div class="icon-del answer-del">
-																	<i class="material-icons icon-small icon-color">delete</i>
-																</div>
-																<div class="icon-add answer-add"></div>
-																<label for="answer" class="text answer-title">選項: </label>
-																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
-															</div>
-															<div class="answerwrap">
-																<div class="icon-del answer-del">
-																	<i class="material-icons icon-small icon-color">delete</i>
-																</div>
-																<div class="icon-add answer-add"></div>
-																<label for="answer" class="text answer-title">選項: </label>
-																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
-															</div>
-														</div>
-													</li>
-													<li class="dd-item">
-														<div class="icon-btn icon-del">
-															<i class="material-icons icon-small icon-color">delete</i>
-														</div>
-														<div class="dd-handle dd3-handle">Drag</div>
-														<div class="dd3-content">
 															<textarea class="formtextInput singleline" rows="4">李克特量表</textarea>
 														</div>
 														<div class="answer insidefiled">
@@ -185,7 +167,9 @@
 																<div class="icon-del answer-del">
 																	<i class="material-icons icon-small icon-color">delete</i>
 																</div>
-																<div class="icon-add answer-add"></div>
+																<div class="icon-add answer-add">
+																	<i class="material-icons icon-small icon-color">create</i>
+																</div>
 																<label for="answer" class="text answer-title">選項: </label>
 																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
 															</div>
@@ -193,7 +177,9 @@
 																<div class="icon-del answer-del">
 																	<i class="material-icons icon-small icon-color">delete</i>
 																</div>
-																<div class="icon-add answer-add"></div>
+																<div class="icon-add answer-add">
+																	<i class="material-icons icon-small icon-color">create</i>
+																</div>
 																<label for="answer" class="text answer-title">選項: </label>
 																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
 															</div>
@@ -201,7 +187,9 @@
 																<div class="icon-del answer-del">
 																	<i class="material-icons icon-small icon-color">delete</i>
 																</div>
-																<div class="icon-add answer-add"></div>
+																<div class="icon-add answer-add">
+																	<i class="material-icons icon-small icon-color">create</i>
+																</div>
 																<label for="answer" class="text answer-title">選項: </label>
 																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
 															</div>
@@ -209,7 +197,9 @@
 																<div class="icon-del answer-del">
 																	<i class="material-icons icon-small icon-color">delete</i>
 																</div>
-																<div class="icon-add answer-add"></div>
+																<div class="icon-add answer-add">
+																	<i class="material-icons icon-small icon-color">create</i>
+																</div>
 																<label for="answer" class="text answer-title">選項: </label>
 																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
 															</div>
@@ -221,7 +211,8 @@
 									</li>
 									<li class="dd-item">
 										<section class="group">
-											<h1 class="dd-handle"><input class="formtextInput titletextarea" rows="1" autofocus value="題組名稱"></h1>
+											<h1 class="dd-handle">
+												<input class="formtextInput titletextarea" rows="1" value="題組名稱"></h1>
 											<div class="dd formfields">
 												<ol class="dd-list">
 													<li class="dd-item">
@@ -254,94 +245,6 @@
 														</div>
 														<div class="dd-handle dd3-handle">Drag</div>
 														<div class="dd3-content">
-															<textarea class="formtextInput singleline" rows="2">單選題型</textarea>
-														</div>
-														
-														<div class="answer insidefiled">
-															<div class="answerwrap">
-																<div class="icon-del answer-del">
-																	<i class="material-icons icon-small icon-color">delete</i>
-																</div>
-																<div class="icon-add answer-add"></div>
-																<label for="answer" class="text answer-title">選項: </label>
-																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
-															</div>
-															<div class="answerwrap">
-																<div class="icon-del answer-del">
-																	<i class="material-icons icon-small icon-color">delete</i>
-																</div>
-																<div class="icon-add answer-add"></div>
-																<label for="answer" class="text answer-title">選項: </label>
-																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
-															</div>
-															<div class="answerwrap">
-																<div class="icon-del answer-del">
-																	<i class="material-icons icon-small icon-color">delete</i>
-																</div>
-																<div class="icon-add answer-add"></div>
-																<label for="answer" class="text answer-title">選項: </label>
-																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
-															</div>
-															<div class="answerwrap">
-																<div class="icon-del answer-del">
-																	<i class="material-icons icon-small icon-color">delete</i>
-																</div>
-																<div class="icon-add answer-add"></div>
-																<label for="answer" class="text answer-title">選項: </label>
-																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
-															</div>
-														</div>
-													</li>
-													<li class="dd-item">
-														<div class="icon-btn icon-del">
-															<i class="material-icons icon-small icon-color">delete</i>
-														</div>
-														<div class="dd-handle dd3-handle">Drag</div>
-														<div class="dd3-content">
-															<textarea class="formtextInput singleline" rows="4">多選題型</textarea>
-														</div>
-														
-														<div class="answer insidefiled">
-															<div class="answerwrap">
-																<div class="icon-del answer-del">
-																	<i class="material-icons icon-small icon-color">delete</i>
-																</div>
-																<div class="icon-add answer-add"></div>
-																<label for="answer" class="text answer-title">選項: </label>
-																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
-															</div>
-															<div class="answerwrap">
-																<div class="icon-del answer-del">
-																	<i class="material-icons icon-small icon-color">delete</i>
-																</div>
-																<div class="icon-add answer-add"></div>
-																<label for="answer" class="text answer-title">選項: </label>
-																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
-															</div>
-															<div class="answerwrap">
-																<div class="icon-del answer-del">
-																	<i class="material-icons icon-small icon-color">delete</i>
-																</div>
-																<div class="icon-add answer-add"></div>
-																<label for="answer" class="text answer-title">選項: </label>
-																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
-															</div>
-															<div class="answerwrap">
-																<div class="icon-del answer-del">
-																	<i class="material-icons icon-small icon-color">delete</i>
-																</div>
-																<div class="icon-add answer-add"></div>
-																<label for="answer" class="text answer-title">選項: </label>
-																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
-															</div>
-														</div>
-													</li>
-													<li class="dd-item">
-														<div class="icon-btn icon-del">
-															<i class="material-icons icon-small icon-color">delete</i>
-														</div>
-														<div class="dd-handle dd3-handle">Drag</div>
-														<div class="dd3-content">
 															<textarea class="formtextInput singleline" rows="4">李克特量表</textarea>
 														</div>
 														
@@ -350,7 +253,9 @@
 																<div class="icon-del answer-del">
 																	<i class="material-icons icon-small icon-color">delete</i>
 																</div>
-																<div class="icon-add answer-add"></div>
+																<div class="icon-add answer-add">
+																	<i class="material-icons icon-small icon-color">create</i>
+																</div>
 																<label for="answer" class="text answer-title">選項: </label>
 																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
 															</div>
@@ -358,7 +263,9 @@
 																<div class="icon-del answer-del">
 																	<i class="material-icons icon-small icon-color">delete</i>
 																</div>
-																<div class="icon-add answer-add"></div>
+																<div class="icon-add answer-add">
+																	<i class="material-icons icon-small icon-color">create</i>
+																</div>
 																<label for="answer" class="text answer-title">選項: </label>
 																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
 															</div>
@@ -366,7 +273,9 @@
 																<div class="icon-del answer-del">
 																	<i class="material-icons icon-small icon-color">delete</i>
 																</div>
-																<div class="icon-add answer-add"></div>
+																<div class="icon-add answer-add">
+																	<i class="material-icons icon-small icon-color">create</i>
+																</div>
 																<label for="answer" class="text answer-title">選項: </label>
 																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
 															</div>
@@ -374,7 +283,9 @@
 																<div class="icon-del answer-del">
 																	<i class="material-icons icon-small icon-color">delete</i>
 																</div>
-																<div class="icon-add answer-add"></div>
+																<div class="icon-add answer-add">
+																	<i class="material-icons icon-small icon-color">create</i>
+																</div>
 																<label for="answer" class="text answer-title">選項: </label>
 																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
 															</div>
