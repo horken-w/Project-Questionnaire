@@ -85,7 +85,11 @@
         this.el.find(items.addGroupbtn.dot()).first().addClass('active');
         this.el.find(items.addGroupbtn.dot()).map(function(i, val){
           addEvent(val, 'click', _this.bildingSelected, this);
+          addEvent(val.childNodes[3], 'click', _this.removeItem, this.parentElement);
+          addEvent(val, 'mouseenter', _this.hideShowTrashbin, val.childNodes[3]); 
+          addEvent(val, 'mouseleave', _this.hideShowTrashbin, val.childNodes[3]); 
         })
+        
         if(this.el.find(items.itemClass.dot()).length>0){
           this.el.find(items.deletebtn.dot()).map(function(i, val){
             addEvent(val, 'click', _this.removeItem, this.parentElement);
@@ -109,7 +113,7 @@
 
       switch (addbtn){
         case items.addGroupbtn.hashtag():
-          addEvent(active, 'click', _this.groupCreat, _this.bildingSelected);
+          addEvent(active, 'click', _this.groupCreat, _this);
           break;
         case items.addSingleline.hashtag():
           addEvent(active, 'click', _this.singInputCreat, _this);
@@ -133,21 +137,27 @@
       
     },
     groupCreat:function(active){
-      var _this=this, section=$('<section class="group" />') ;
+      var _this=this, section=$('<section class="group" data-group_seq=0 data-is_base_info=true/>') ;
       var wrapper=_this.wrap === undefined ? $(items.listClass.dot()).first() : _this.wrap;
+      
       section.append($('<h1 class="dd-handle" />').append($('<input/>',{
         class: 'formtextInput titletextarea',
         row: 1,
         value: '題組名稱'
       })));
-      addEvent(section[0], 'click', active, section[0]);      
+      section.append(iconRemove);
+      addEvent(section[0], 'mouseenter', active.hideShowTrashbin, section[0].childNodes[1]); 
+      addEvent(section[0], 'mouseleave', active.hideShowTrashbin, section[0].childNodes[1]); 
+      addEvent(section[0], 'click', active.bildingSelected, section[0]);
       section.append($('<div id="root" class="dd formfields"/>').append($('<ol class="'+items.listClass+'"/>')));
       wrapper.append($('<li class="'+items.itemClass+'"/>').append(section));
+      addEvent(section[0].childNodes[1], 'click', active.removeItem, section[0].parentElement);
     },
     singInputCreat:function(active){
       var rootNode=active.findParentExites(),
           _li=$(createEl(items.itemNodeName, items.itemClass));
       if(rootNode){
+        _li.attr({'data-type': 0, 'data-attribute': 0, 'data-sequence': 1});
         _li.append(iconRemove.clone());
         addEvent(_li[0].children[0], 'click', active.removeItem, _li);
         _li.append(divDrag.clone().text('drag'));
@@ -165,6 +175,7 @@
       var rootNode=active.findParentExites(),
           _li=$(createEl(items.itemNodeName, items.itemClass));
       if(rootNode){
+        _li.attr({'data-type': 0, 'data-attribute': 1, 'data-sequence': 1});
         _li.append(iconRemove.clone());
         addEvent(_li[0].children[0], 'click', active.removeItem, _li);
         _li.append(divDrag.clone().text('drag'));
@@ -181,6 +192,7 @@
       var rootNode=active.findParentExites(),
           _li=$(createEl(items.itemNodeName, items.itemClass));
       if(rootNode){
+        _li.attr({'data-type': 0, 'data-attribute': 2, 'data-sequence': 1});
         _li.append(iconRemove.clone());
         addEvent(_li[0].children[0], 'click', active.removeItem, _li);
         _li.append(divDrag.clone().text('drag'));
@@ -196,6 +208,7 @@
       var rootNode=active.findParentExites(),
           _li=$(createEl(items.itemNodeName, items.itemClass));
       if(rootNode){
+        _li.attr({'data-type': 0, 'data-attribute': 3, 'data-sequence': 1});
         _li.append(iconRemove.clone());
         addEvent(_li[0].children[0], 'click', active.removeItem, _li);
         _li.append(divDrag.clone().text('drag'));
@@ -209,16 +222,26 @@
       
     },
     multradioBoxCreat:function(active){
-      var rootNode=active.findParentExites(),
-          _li=$(createEl(items.itemNodeName, items.itemClass));
+      var rootNode=active.findParentExites(), lists=['滿意', '贊成', '同意', '喜歡'],
+          _li=$(createEl(items.itemNodeName, items.itemClass)), _select=$('<select name="favorate" class="select answer-input" />');
       if(rootNode){
+        _li.attr({'data-type': 0, 'data-attribute': 4, 'data-sequence': 1});
         _li.append(iconRemove.clone());
         addEvent(_li[0].children[0], 'click', active.removeItem, _li);
         _li.append(divDrag.clone().text('drag'));
         _li.append(divTxt.clone().append($('<textarea rows="2"/>')
           .addClass('formtextInput singleline').val('李克特量表')));
         _li.append(divHide.clone());
-        _li.find('.answer').append(active.subTextareaCreate(_li.find('.answer')[0], active));
+        lists.map(function(val, i){
+          _select.append($('<option value="'+val+'">'+val+'</option>'))
+        })
+        _li.find('.answer').append($('<div class="answerwrap"/>'));
+        $('<label/>', {
+          class: 'text answer-title',
+          for: 'answer',
+          text: '類型: '
+        }).appendTo(_li.find('.answerwrap'));
+        _li.find('.answerwrap').append(_select);
         _li.appendTo($(rootNode));
         addEvent( _li.find(items.contentClass.dot())[0],'click', active.bildingOToggleWin, _li.find(items.contentClass.dot())[0]);
       }else alert('請先建立/選擇群組在新增內容!!'); 
@@ -272,8 +295,8 @@
                 document.getElementsByClassName('active')[0].getElementsByClassName('dd-list') ? document.getElementsByClassName('active')[0].getElementsByClassName('dd-list') : false;
      
     },
-    showPersonalDatal: function(){
-
+    hideShowTrashbin:function(target){
+      classie.toggle(target, 'showout');
     },
     bildingOToggleWin: function(target){ //content open/close
       classie.toggle(target.nextElementSibling, 'detail-showout');
@@ -321,7 +344,6 @@
         $(el).find('input').each(function(i, val){
           answer=val.value;
         })
-        console.log(answer);
         return answer;
       }
       var setQuestion=function(el, array){

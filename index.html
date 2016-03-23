@@ -55,7 +55,7 @@
 										<textarea class="formtextInput subtitletextarea" rows="7">表尾描述</textarea></h3>
 									<div class="hrline"></div>
 								</div>
-								<div data-group_title="個人資料" data-group_seq='0' data-is_base_info='true' class="group boxsize denysele">
+								<div data-group_title="個人資料" data-group_seq=0 data-is_base_info=true class="group boxsize denysele">
 									<div>
 										<label for="persondetail">是否填寫個資：</label>
 										<input type="radio" class="formtextInput"  name="quiztype" value="anonymous" checked>匿名資料
@@ -64,88 +64,24 @@
 									<div class="table tablehide">
 										<div class="persondetail caption">身分所需欄位</div>
 										<div class="tr">
-											<div class="td"><input type="checkbox"></div>
+											<div class="td checkbox"></div>
 											<div class="td">欄位名稱</div>
 											<div class="td">欄位屬性</div>
-											<div class="td">必填</div>
 										</div>
 										<div class="tr">
-											<div class="td"><input type="checkbox"></div>
+											<div class="td checkbox"><input type="checkbox"></div>
 											<div class="td">姓名</div>
 											<div class="td">文字輸入</div>
-											<div class="td"></div>
 										</div>
 										<div class="tr">
-											<div class="td"><input type="checkbox"></div>
+											<div class="td checkbox"><input type="checkbox"></div>
 											<div class="td">電子郵件</div>
 											<div class="td">文字輸入</div>
-											<div class="td"></div>
 										</div>
 										<div class="tr">
-											<div class="td"><input type="checkbox"></div>
+											<div class="td checkbox"><input type="checkbox"></div>
 											<div class="td">性別</div>
 											<div class="td">單選項</div>
-											<div class="td"><input type="checkbox"></div>
-										</div>
-										<div class="tr">
-											<div class="td"><input type="checkbox"></div>
-											<div class="td">身分證字號</div>
-											<div class="td">文字輸入</div>
-											<div class="td"><input type="checkbox"></div>
-										</div>
-										<div class="tr">
-											<div class="td"><input type="checkbox"></div>
-											<div class="td">生日</div>
-											<div class="td">文字輸入</div>
-											<div class="td"><input type="checkbox"></div>
-										</div>
-										<div class="tr">
-											<div class="td"><input type="checkbox"></div>
-											<div class="td">連絡電話</div>
-											<div class="td">文字輸入</div>
-											<div class="td"><input type="checkbox"></div>
-										</div>
-										<div class="tr">
-											<div class="td"><input type="checkbox"></div>
-											<div class="td">聯絡地址</div>
-											<div class="td">文字輸入</div>
-											<div class="td"><input type="checkbox"></div>
-										</div>
-										<div class="tr">
-											<div class="td"><input type="checkbox"></div>
-											<div class="td">婚姻狀況</div>
-											<div class="td">單選項</div>
-											<div class="td"><input type="checkbox"></div>
-										</div>
-										<div class="tr">
-											<div class="td"><input type="checkbox"></div>
-											<div class="td">行業列別</div>
-											<div class="td">單選項</div>
-											<div class="td"><input type="checkbox"></div>
-										</div>
-										<div class="tr">
-											<div class="td"><input type="checkbox"></div>
-											<div class="td">職務類別</div>
-											<div class="td">單選項</div>
-											<div class="td"><input type="checkbox"></div>
-										</div>
-										<div class="tr">
-											<div class="td"><input type="checkbox"></div>
-											<div class="td">學歷</div>
-											<div class="td">單選項</div>
-											<div class="td"><input type="checkbox"></div>
-										</div>
-										<div class="tr">
-											<div class="td"><input type="checkbox"></div>
-											<div class="td">年收入</div>
-											<div class="td">單選項</div>
-											<div class="td"><input type="checkbox"></div>
-										</div>
-										<div class="tr">
-											<div class="td"><input type="checkbox"></div>
-											<div class="td">興趣與喜好</div>
-											<div class="td">多選項</div>
-											<div class="td"><input type="checkbox"></div>
 										</div>
 									</div>
 								</div>
@@ -154,8 +90,11 @@
 							<div id="root" class="dd">
 								<ol class="dd-list">
 									<li class="dd-item">
-										<section data-group_seq='0' data-is_base_info='true' class="group">
+										<section data-group_seq=0 data-is_base_info=true class="group">
 											<h1 class="dd-handle"><input class="formtextInput titletextarea" rows="1" autofocus value="題組名稱"></h1>
+											<div class="icon-btn icon-del">
+												<i class="material-icons icon-small icon-color">delete</i>
+											</div>
 											<div class="dd formfields">
 												<ol class="dd-list">
 													<li data-type='0' data-attribute=0 data-sequence=1 class="dd-item">													
@@ -243,44 +182,13 @@
 														</div>
 														<div class="answer insidefiled">
 															<div class="answerwrap">
-																<div class="icon-del answer-del">
-																	<i class="material-icons icon-small icon-color">delete</i>
-																</div>
-																<div class="icon-add answer-add">
-																	<i class="material-icons icon-small icon-color">create</i>
-																</div>
-																<label for="answer" class="text answer-title">選項: </label>
-																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
-															</div>
-															<div class="answerwrap">
-																<div class="icon-del answer-del">
-																	<i class="material-icons icon-small icon-color">delete</i>
-																</div>
-																<div class="icon-add answer-add">
-																	<i class="material-icons icon-small icon-color">create</i>
-																</div>
-																<label for="answer" class="text answer-title">選項: </label>
-																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
-															</div>
-															<div class="answerwrap">
-																<div class="icon-del answer-del">
-																	<i class="material-icons icon-small icon-color">delete</i>
-																</div>
-																<div class="icon-add answer-add">
-																	<i class="material-icons icon-small icon-color">create</i>
-																</div>
-																<label for="answer" class="text answer-title">選項: </label>
-																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
-															</div>
-															<div class="answerwrap">
-																<div class="icon-del answer-del">
-																	<i class="material-icons icon-small icon-color">delete</i>
-																</div>
-																<div class="icon-add answer-add">
-																	<i class="material-icons icon-small icon-color">create</i>
-																</div>
-																<label for="answer" class="text answer-title">選項: </label>
-																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
+																<label for="answer" class="text answer-title">類型: </label>
+																<select name="favorate" class="select answer-input">
+																	<option value="滿意">滿意</option>
+																	<option value="贊成">贊成</option>
+																	<option value="同意">同意</option>
+																	<option value="喜歡">喜歡</option>
+																</select>
 															</div>
 														</div>
 													</li>
@@ -289,9 +197,13 @@
 										</section>
 									</li>
 									<li class="dd-item">
-										<section data-group_seq='0' data-is_base_info='true' class="group">
+										<section data-group_seq=0 data-is_base_info=true class="group">
 											<h1 class="dd-handle">
-												<input class="formtextInput titletextarea" rows="1" value="題組名稱"></h1>
+												<input class="formtextInput titletextarea" rows="1" value="題組名稱">
+											</h1>
+											<div class="icon-btn icon-del">
+												<i class="material-icons icon-small icon-color">delete</i>
+											</div>
 											<div class="dd formfields">
 												<ol class="dd-list">
 													<li class="dd-item" data-type='0' data-attribute=0 data-sequence=1>
@@ -325,48 +237,16 @@
 														<div class="dd-handle dd3-handle">Drag</div>
 														<div class="dd3-content">
 															<textarea class="formtextInput singleline" rows="4">李克特量表</textarea>
-														</div>
-														
+														</div>														
 														<div class="answer insidefiled">
 															<div class="answerwrap">
-																<div class="icon-del answer-del">
-																	<i class="material-icons icon-small icon-color">delete</i>
-																</div>
-																<div class="icon-add answer-add">
-																	<i class="material-icons icon-small icon-color">create</i>
-																</div>
-																<label for="answer" class="text answer-title">選項: </label>
-																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
-															</div>
-															<div class="answerwrap">
-																<div class="icon-del answer-del">
-																	<i class="material-icons icon-small icon-color">delete</i>
-																</div>
-																<div class="icon-add answer-add">
-																	<i class="material-icons icon-small icon-color">create</i>
-																</div>
-																<label for="answer" class="text answer-title">選項: </label>
-																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
-															</div>
-															<div class="answerwrap">
-																<div class="icon-del answer-del">
-																	<i class="material-icons icon-small icon-color">delete</i>
-																</div>
-																<div class="icon-add answer-add">
-																	<i class="material-icons icon-small icon-color">create</i>
-																</div>
-																<label for="answer" class="text answer-title">選項: </label>
-																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
-															</div>
-															<div class="answerwrap">
-																<div class="icon-del answer-del">
-																	<i class="material-icons icon-small icon-color">delete</i>
-																</div>
-																<div class="icon-add answer-add">
-																	<i class="material-icons icon-small icon-color">create</i>
-																</div>
-																<label for="answer" class="text answer-title">選項: </label>
-																<input class="select answer-input" type="text" placeholder="請輸入你的選項...">
+																<label for="answer" class="text answer-title">類型: </label>
+																<select name="favorate" class="select answer-input">
+																	<option value="滿意">滿意</option>
+																	<option value="贊成">贊成</option>
+																	<option value="同意">同意</option>
+																	<option value="喜歡">喜歡</option>
+																</select>
 															</div>
 														</div>
 													</li>

@@ -150,7 +150,7 @@ section + h3{
 }
 
 .group > h1{
-    width: 100px;
+    width: 80%;
     cursor: move;
     margin: 0 auto;
     text-align: center;
@@ -169,6 +169,7 @@ section + h3{
 }
 .group .formtextInput.titletextarea{
     font-size: 0.9em;
+    text-align: center;
     line-height: 100%;
 }
 .active{
@@ -202,7 +203,8 @@ section + h3{
     position: relative;
     display: inline-block;
     list-style: none;
-    line-height: 20px;
+    line-height: 20px;    
+    margin-top: 0.5em;
 }
 
 .dd > .dd-list {
@@ -431,8 +433,16 @@ section.dd-handle {
     top: 5px;
     right: 10px;
 }
-.dd-item .icon-add{
-    
+
+h1 + .icon-btn{
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1s;
+}
+.showout{
+    opacity: 1!important;
+    pointer-events: auto!important;
+    z-index: 5;
 }
 
 /*Table Select*/
@@ -456,6 +466,10 @@ section.dd-handle {
 .td{
     display: table-cell;
     border: 2px dotted hsla(120, 30%, 40%, 0.3);
+}
+.td.checkbox{
+    text-align: center;
+    width: 10%;
 }
 .denysele{
     height: 20px;
