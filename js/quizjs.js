@@ -42,6 +42,7 @@
   var items={
         rootEl: 'root',
         addGroupbtn: 'group',
+        exportDate: 'submit',
         addSingleline: 'singleline',
         addMultline: 'textarea',
         addRadiobox: 'radiobox',
@@ -59,7 +60,8 @@
       var divDrag=$(createEl('div', [items.handleClass, 'dd3-handle'])),
           divTxt=$(createEl('div', 'dd3-content')),
           divHide=$(createEl('div', ['answer', 'insidefiled'])),
-          iconRemove=$(createEl('div', 'icon-btn')).append($(createEl('i', ['material-icons', 'icon-small', 'icon-color'])).text('delete'));
+          iconRemove=$(createEl('div', 'icon-btn')).append($(createEl('i', ['material-icons', 'icon-small', 'icon-color'])).text('delete')),
+          sentseq={};
 
   quizsBox.prototype={
     init: function(){
@@ -68,7 +70,17 @@
       id.map(function(i, val){
         _this.creatItemListener(val.id.hashtag());
       });
-      
+      this.w.find($('input[name="quiztype"]')).on('click', function(e){
+        if(this.value === 'person'){
+          $('.tablehide').removeClass('tablehide');
+          $('.denysele').removeClass('denysele');
+        }else{          
+          $('.table').addClass('tablehide').delay(1000).queue(function(){
+            $('.boxsize').addClass('denysele').dequeue();
+          });
+        }        
+      });
+
       if(this.el.find(items.addGroupbtn.dot()).length > 0){
         this.el.find(items.addGroupbtn.dot()).first().addClass('active');
         this.el.find(items.addGroupbtn.dot()).map(function(i, val){
@@ -85,31 +97,37 @@
             addEvent(val, 'click', _this.bildingOToggleWin, this);
           })
         }
-        
       }
+      $('a').on('click', function(e){ //remove heperlink function
+        e.preventDefault();
+      })
+
     },
     creatItemListener:function(addbtn){
-      var _this=this, active=$(addbtn);
+      var _this=this, active=$(addbtn)[0];
       var _li=createEl(items.itemNodeName, items.itemClass);
 
       switch (addbtn){
         case items.addGroupbtn.hashtag():
-          addEvent(active[0], 'click', _this.groupCreat, _this.bildingSelected);
+          addEvent(active, 'click', _this.groupCreat, _this.bildingSelected);
           break;
         case items.addSingleline.hashtag():
-          addEvent(active[0], 'click', _this.singInputCreat, _this);
+          addEvent(active, 'click', _this.singInputCreat, _this);
           break;
         case items.addMultline.hashtag():
-          addEvent(active[0], 'click', _this.multInputCreat, _this);
+          addEvent(active, 'click', _this.multInputCreat, _this);
           break;
         case items.addRadiobox.hashtag():
-          addEvent(active[0], 'click', _this.radioBoxCreat, _this);
+          addEvent(active, 'click', _this.radioBoxCreat, _this);
           break;
         case items.addCheckbox.hashtag():
-          addEvent(active[0], 'click', _this.checkBoxCreat, _this);
+          addEvent(active, 'click', _this.checkBoxCreat, _this);
           break;
         case items.addmultRadio.hashtag():
-          addEvent(active[0], 'click', _this.multradioBoxCreat, _this);
+          addEvent(active, 'click', _this.multradioBoxCreat, _this);
+          break;
+        case items.exportDate.hashtag():
+          addEvent(active, 'click', _this.exportData, _this);
           break;
       }
       
@@ -140,7 +158,8 @@
           .addClass('formtextInput singleinput ')));
         _li.appendTo($(rootNode));
         addEvent( _li.find(items.contentClass.dot())[0],'click', active.bildingOToggleWin, _li.find(items.contentClass.dot())[0]);
-      }else alert('請先建立/選擇群組在新增內容!!');      
+      }else alert('請先建立/選擇群組在新增內容!!');   
+
     },
     multInputCreat:function(active){
       var rootNode=active.findParentExites(),
@@ -253,6 +272,9 @@
                 document.getElementsByClassName('active')[0].getElementsByClassName('dd-list') ? document.getElementsByClassName('active')[0].getElementsByClassName('dd-list') : false;
      
     },
+    showPersonalDatal: function(){
+
+    },
     bildingOToggleWin: function(target){ //content open/close
       classie.toggle(target.nextElementSibling, 'detail-showout');
     },
@@ -261,6 +283,81 @@
 
       e.parentElement.children.length-1 > 0 ? item.remove(): 
         alert('題目無法全部刪除!');
+    },
+    serialize: function(){
+      var quizstype=['group_title', 'group_seq', 'is_base_info', 'questions'], 
+          group=[ 'description', 'type', 'attribute', 'sequence', 'required', 'answers'], 
+          formpaper=document.getElementsByTagName('form')[0];
+      // var arrToObj= function(ind, el, array){
+      //   array.reduce(function(val, i) {
+      //     sentseq[ind][i] = el.data(i); //a, b, c
+      //     return sentseq[ind];
+      //   }, {});
+      // }
+      var objToArr= function(el, array, section){
+        var obj={};
+        if(!section){
+          array.reduce(function(val, i) {
+            if (el.data(i)!==undefined) 
+              obj[i] = el.data(i); 
+            else 
+              obj[i] = [];
+            return obj;
+          }, {});
+        }else{
+          array.reduce(function(val, i) {
+            if (el.data(i)!==undefined) 
+              obj[i] = el.data(i); 
+            else 
+              obj[i] = [];
+            return obj;
+          }, {});
+          obj.group_title=$(el).find('h1>input').val();
+        }        
+        return obj;
+      };
+      var setAnswer=function(el){
+        var answer;
+        $(el).find('input').each(function(i, val){
+          answer=val.value;
+        })
+        console.log(answer);
+        return answer;
+      }
+      var setQuestion=function(el, array){
+        var obj={}, arraylist=array, nodes=el.find('.dd-item');
+        for(var i=0; i<nodes.length; i++){
+          var node=nodes[i];
+          array.reduce(function(val, inx) {
+            if ($(node).data(inx)!==undefined) 
+              obj[inx] = $(node).data(inx); 
+            else 
+              obj[inx] = [];
+            return obj;
+          }, {});
+          obj.description=$(node).find('textarea:first')[0].value;
+          obj.request=1;
+          if(obj.attribute === 2 || obj.attribute === 3 || obj.attribute === 4) 
+            obj.answers.push(setAnswer(node));
+        }
+        return obj;
+      };
+
+      sentseq['title']=formpaper[0].value;
+      sentseq['description']=formpaper[1].value;
+      sentseq['footer']=formpaper[2].value;
+      sentseq['target']=document.querySelector('input[name="quiztype"]:checked').value;
+      sentseq['groups']=[];
+      sentseq['groups'].push(objToArr($('.group'), quizstype));
+      $('section.group').map(function(i, val){
+        sentseq['groups'].push(objToArr($(val), quizstype, true));        
+        sentseq.groups[i].questions.push(setQuestion($(val), group));        
+      })
+
+      console.log(sentseq);
+    },
+    exportData: function(tooling){
+      return tooling.serialize();
     }
   }
 
