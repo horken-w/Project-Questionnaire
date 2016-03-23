@@ -85,9 +85,9 @@
         this.el.find(items.addGroupbtn.dot()).first().addClass('active');
         this.el.find(items.addGroupbtn.dot()).map(function(i, val){
           addEvent(val, 'click', _this.bildingSelected, this);
-          addEvent(val.childNodes[3], 'click', _this.removeItem, this.parentElement);
-          addEvent(val, 'mouseenter', _this.hideShowTrashbin, val.childNodes[3]); 
-          addEvent(val, 'mouseleave', _this.hideShowTrashbin, val.childNodes[3]); 
+          addEvent(val.childNodes[1].childNodes[3], 'click', _this.removeItem, this.parentElement);
+          addEvent(val.childNodes[1], 'mouseenter', _this.hideShowTrashbin, val.childNodes[1].childNodes[3]); 
+          addEvent(val.childNodes[1], 'mouseleave', _this.hideShowTrashbin, val.childNodes[1].childNodes[3]); 
         })
         
         if(this.el.find(items.itemClass.dot()).length>0){
@@ -140,18 +140,18 @@
       var _this=this, section=$('<section class="group" data-group_seq=0 data-is_base_info=true/>') ;
       var wrapper=_this.wrap === undefined ? $(items.listClass.dot()).first() : _this.wrap;
       
-      section.append($('<h1 class="dd-handle" />').append($('<input/>',{
+      $('<div class="hgtitle" />').append($('<h1 class="dd-handle" />').append($('<input/>',{
         class: 'formtextInput titletextarea',
         row: 1,
         value: '題組名稱'
-      })));
-      section.append(iconRemove);
-      addEvent(section[0], 'mouseenter', active.hideShowTrashbin, section[0].childNodes[1]); 
-      addEvent(section[0], 'mouseleave', active.hideShowTrashbin, section[0].childNodes[1]); 
+      }))).appendTo(section);
+      section.find('.hgtitle').append(iconRemove);
+      addEvent(section.find('.hgtitle')[0], 'mouseenter', active.hideShowTrashbin, section.find('.hgtitle')[0].childNodes[1]); 
+      addEvent(section.find('.hgtitle')[0], 'mouseleave', active.hideShowTrashbin, section.find('.hgtitle')[0].childNodes[1]); 
       addEvent(section[0], 'click', active.bildingSelected, section[0]);
       section.append($('<div id="root" class="dd formfields"/>').append($('<ol class="'+items.listClass+'"/>')));
       wrapper.append($('<li class="'+items.itemClass+'"/>').append(section));
-      addEvent(section[0].childNodes[1], 'click', active.removeItem, section[0].parentElement);
+      addEvent(section.find('.icon-btn')[0], 'click', active.removeItem, section[0].parentElement);
     },
     singInputCreat:function(active){
       var rootNode=active.findParentExites(),
