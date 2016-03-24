@@ -13,8 +13,8 @@ h1, h2, h3, h4, body{
 
 .banner {
     position: relative;
-    height: 13.5em;
-    background: hsl(220, 40%, 80%);
+    height: 8em;
+    background: hsl(185, 40%, 60%);
     margin: 0 auto;
 }
 
@@ -110,7 +110,7 @@ h1, h2, h3, h4, body{
     word-wrap: break-word;
     outline: none;
     flex-shrink: 1;
-    font: 400 1em '標楷體', '微軟正黑體', sans-serif;
+    font: 400 1em '微軟正黑體', '標楷體', sans-serif;
     overflow-y: visible;
     overflow-x: hidden;
 }
@@ -312,6 +312,7 @@ section + h3{
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
+    color: #c8c8c8;
     border: 1px solid #807b7b;
     text-shadow: 0 1px 0 #807b7b;
     background: #c8c8c8;
@@ -369,7 +370,7 @@ section.dd-handle {
 }
 .answer{
     margin-top: -5px;
-    height: 0;
+    height: 130px;
     transition: height 1s;
     overflow-y: auto;
     position: relative;
@@ -403,12 +404,6 @@ section.dd-handle {
     padding-top: 5px;
     flex: 0 3 2%;
     order: 4;
-}
-.detail-showout{
-    height: 130px;
-}
-.single.detail-showout{
-    height: 80px;
 }
 .insidefiled{
     -webkit-box-shadow: inset 0 0 5px hsla(0, 0%, 0%, 0.8);
@@ -479,4 +474,27 @@ h1 + .icon-btn{
 .tablehide{
     opacity: 0;
     pointer-events: none;
+}
+
+/*sidebar*/
+.sidebar{
+    position: absolute;
+    display: flex;
+    cursor: pointer;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    transition: opacity 1s;
+    pointer-events: none;
+    border: 5px double hsl(0, 0%, 80%);
+    padding: 5px;
+    width: 10%;
+    opacity: 0;
+    right: 2%;
+}
+.sidebarpos{
+    border-bottom: 2px solid hsla(0, 0%, 0%, 0.4);
+    padding: 5px;
+}
+.sidebarpos:hover{
+    text-shadow: 2px 3px 5px hsla(0, 0%, 0%, 0.5);
 }

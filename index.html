@@ -21,20 +21,20 @@
 		<header class="banner">
 			<div class="setting">
 				<div class="settingwrap">
-					<div id="group" class="btnstyle"><a href="#">題組</a></div>
+					<!-- <div id="group" class="btnstyle"><a href="#">題組</a></div> -->
 					<div id="preview" class="btnstyle"><a href="#">預覽</a></div>
 					<div id="submit" class="btnstyle"><a href="#">送出</a></div>
 				</div>
 			</div>
-			<div class="tooling">
+			<!-- <div class="tooling">
 				<div class="toolingwrap">
-					<div id="singleline" class="dd-new-item btnstyle">單欄位輸入</div>
-					<div id="textarea" class="dd-new-item btnstyle">多欄位輸入</div>
-					<div id="radiobox" class="dd-new-item btnstyle">單選題型</div>
-					<div id="checkbox" class="dd-new-item btnstyle">多選題型</div>
-					<div id="likertscale" class="dd-new-item btnstyle">李克特量表</div>
+					<div id="sigle" class="dd-new-item btnstyle">單欄位輸入</div>
+					<div id="txtar" class="dd-new-item btnstyle">多欄位輸入</div>
+					<div id="radio" class="dd-new-item btnstyle">單選題型</div>
+					<div id="check" class="dd-new-item btnstyle">多選題型</div>
+					<div id="liker" class="dd-new-item btnstyle">李克特量表</div>
 				</div>
-			</div>
+			</div> -->
 		</header>
 		<article class="content">
 				<form action="" method="post" id="form1">
@@ -43,16 +43,16 @@
 							<section class="formheader">
 								<div class="textarea">
 									<h1 class="formtitle">
-										<input class="formtextInput titletextarea" rows="1" autofocus value="簡易問卷">
+										<input class="formtextInput titletextarea" rows="1" autofocus value="問卷名稱">
 									</h1>
 									<div class="hrline"></div>
 								</div>
 								<div class="textarea">
 									<h3 id="quizdescip" class=" formsubtitle">
-										<textarea class="formtextInput subtitletextarea" rows="7">詳細描述</textarea></h3>
+										<textarea class="formtextInput subtitletextarea" rows="7">問卷說明</textarea></h3>
 									<div class="hrline"></div>
 									<h3 id="footer" class=" formsubtitle">
-										<textarea class="formtextInput subtitletextarea" rows="7">表尾描述</textarea></h3>
+										<textarea class="formtextInput subtitletextarea" rows="7">結尾謝詞</textarea></h3>
 									<div class="hrline"></div>
 								</div>
 								<div data-group_title="個人資料" data-group_seq=0 data-is_base_info=true class="group boxsize denysele">
@@ -62,11 +62,11 @@
 										<input type="radio" class="formtextInput"  name="quiztype" value="person">填寫資料
 									</div>
 									<div class="table tablehide">
-										<div class="persondetail caption">身分所需欄位</div>
+										<!-- <div class="persondetail caption">身分所需欄位</div> -->
 										<div class="tr">
 											<div class="td checkbox"></div>
-											<div class="td">欄位名稱</div>
-											<div class="td">欄位屬性</div>
+											<div class="td">基本資料問題</div>
+											<div class="td">填答類型</div>
 										</div>
 										<div class="tr">
 											<div class="td checkbox"><input type="checkbox"></div>
@@ -86,7 +86,7 @@
 									</div>
 								</div>
 							</section>
-							<h3>問卷類型</h3>
+							<h3>問卷設定</h3>
 							<div id="root" class="dd">
 								<ol class="dd-list">
 									<li class="dd-item">
@@ -105,11 +105,11 @@
 														</div>
 														<div class="dd-handle dd3-handle">Drag</div>
 														<div class="dd3-content">
-															<textarea class="formtextInput singleline" rows="2">單欄位輸入</textarea>
+															<textarea class="formtextInput singleline" rows="2">問題描述(單欄位)</textarea>
 														</div>
-														<div class="answer insidefiled single">
+														<!-- <div class="answer insidefiled single">
 															<textarea class="formtextInput singleinput " rows="1" placeholder="請輸入你的內容..."></textarea>
-														</div>
+														</div> -->
 													</li>
 													<li data-type='0' data-attribute=1 data-sequence=1 class="dd-item">
 														<div class="icon-btn icon-del">
@@ -117,11 +117,11 @@
 														</div>
 														<div class="dd-handle dd3-handle">Drag</div>
 														<div class="dd3-content">
-															<textarea class="formtextInput singleline" rows="2">多欄位輸入</textarea>
+															<textarea class="formtextInput singleline" rows="2">問題描述(多欄位)</textarea>
 														</div>
-														<div class="answer insidefiled">
+														<!-- <div class="answer insidefiled">
 															<textarea class="formtextInput singleinput " rows="4" placeholder="請輸入你的內容..."></textarea>
-														</div>
+														</div> -->
 													</li>
 													<li data-type='0' data-attribute=3 data-sequence=1 class="dd-item">
 														<div class="icon-btn icon-del">
@@ -129,7 +129,7 @@
 														</div>
 														<div class="dd-handle dd3-handle">Drag</div>
 														<div class="dd3-content">
-															<textarea class="formtextInput singleline" rows="4">多選題型</textarea>
+															<textarea class="formtextInput singleline" rows="4">問題描述(多選題)</textarea>
 														</div>														
 														<div class="answer insidefiled">
 															<div class="answerwrap">
@@ -180,7 +180,7 @@
 														</div>
 														<div class="dd-handle dd3-handle">Drag</div>
 														<div class="dd3-content">
-															<textarea class="formtextInput singleline" rows="4">李克特量表</textarea>
+															<textarea class="formtextInput singleline" rows="4">問題描述(李克特量表)</textarea>
 														</div>
 														<div class="answer insidefiled">
 															<div class="answerwrap">
@@ -216,9 +216,9 @@
 														<div class="dd3-content">
 															<textarea class="formtextInput singleline" rows="2">單欄位輸入</textarea>
 														</div>
-														<div class="answer insidefiled single">
+														<!-- <div class="answer insidefiled single">
 															<textarea class="formtextInput singleinput " rows="1" placeholder="請輸入你的內容..."></textarea>
-														</div>
+														</div> -->
 													</li>
 													<li class="dd-item" data-type='0' data-attribute=1 data-sequence=1>
 														<div class="icon-btn icon-del">
@@ -228,9 +228,9 @@
 														<div class="dd3-content">
 															<textarea class="formtextInput singleline" rows="2">多欄位輸入</textarea>
 														</div>
-														<div class="answer insidefiled">
+														<!-- <div class="answer insidefiled">
 															<textarea class="formtextInput singleinput " rows="4" placeholder="請輸入你的內容..."></textarea>
-														</div>
+														</div> -->
 													</li>
 													<li class="dd-item" data-type='0' data-attribute=4 data-sequence=1>
 														<div class="icon-btn icon-del">
@@ -263,6 +263,14 @@
 				</form>			
 		</article>
 	</div>
+	<aside id="sidebar" class="sidebar showout">
+		<div id="groupside" class="sidebarpos">題組</div>
+		<div id="sigleside" class="sidebarpos">單欄位輸入</div>
+		<div id="txtarside" class="sidebarpos">多欄位輸入</div>
+		<div id="radioside" class="sidebarpos">單選題型</div>
+		<div id="checkside" class="sidebarpos">多選題型</div>
+		<div id="likerside" class="sidebarpos">李克特量表</div>
+	</aside>
 	<script src="https://dl.dropboxusercontent.com/u/50502234/jquery.min.js"></script>
 	<script src="js/classie.js"></script>
 	<script src="js/nestable.js"></script>

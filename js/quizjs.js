@@ -35,6 +35,7 @@
 
   function quizsBox(element){
     this.w=$(document);
+    this.v=window;
     this.el=$(element);
     this.init();
   }
@@ -43,11 +44,11 @@
         rootEl: 'root',
         addGroupbtn: 'group',
         exportDate: 'submit',
-        addSingleline: 'singleline',
-        addMultline: 'textarea',
-        addRadiobox: 'radiobox',
-        addCheckbox: 'checkbox',
-        addmultRadio: 'likertscale',
+        addSingleline: 'sigle',
+        addMultline: 'txtar',
+        addRadiobox: 'radio',
+        addCheckbox: 'check',
+        addmultRadio: 'liker',
         itemNodeName: 'li',
         listClass: 'dd-list',
         itemClass: 'dd-item',
@@ -65,10 +66,11 @@
 
   quizsBox.prototype={
     init: function(){
-      var _this=this, id=$('[id]');
+      var _this=this, id=$('[id]'), _sidebar=$("#sidebar");
 
       id.map(function(i, val){
-        _this.creatItemListener(val.id.hashtag());
+        var txtarray=val.id.slice(0,5);
+        _this.creatItemListener(txtarray, val.id.hashtag());
       });
       this.w.find($('input[name="quiztype"]')).on('click', function(e){
         if(this.value === 'person'){
@@ -80,6 +82,7 @@
           });
         }        
       });
+
 
       if(this.el.find(items.addGroupbtn.dot()).length > 0){
         this.el.find(items.addGroupbtn.dot()).first().addClass('active');
@@ -97,41 +100,43 @@
           this.el.find(items.createbtn.dot()).map(function(i, val){
             addEvent(val, 'click', _this.subTextareaCreate, this.parentElement.parentElement);
           })
-          this.el.find(items.contentClass.dot()).map(function(i, val){
-            addEvent(val, 'click', _this.bildingOToggleWin, this);
-          })
+          // this.el.find(items.contentClass.dot()).map(function(i, val){
+          //   addEvent(val, 'click', _this.bildingOToggleWin, this);
+          // })
         }
       }
       $('a').on('click', function(e){ //remove heperlink function
         e.preventDefault();
       })
 
+      addEvent(this.v, 'scroll', _this.sideBarAnimate, _sidebar);
     },
-    creatItemListener:function(addbtn){
+    creatItemListener:function(action, addbtn){
       var _this=this, active=$(addbtn)[0];
-      var _li=createEl(items.itemNodeName, items.itemClass);
 
-      switch (addbtn){
-        case items.addGroupbtn.hashtag():
+      switch (action){
+        case items.addGroupbtn:
           addEvent(active, 'click', _this.groupCreat, _this);
           break;
-        case items.addSingleline.hashtag():
+        case items.addSingleline:
           addEvent(active, 'click', _this.singInputCreat, _this);
           break;
-        case items.addMultline.hashtag():
+        case items.addMultline:
           addEvent(active, 'click', _this.multInputCreat, _this);
           break;
-        case items.addRadiobox.hashtag():
+        case items.addRadiobox:
           addEvent(active, 'click', _this.radioBoxCreat, _this);
           break;
-        case items.addCheckbox.hashtag():
+        case items.addCheckbox:
           addEvent(active, 'click', _this.checkBoxCreat, _this);
           break;
-        case items.addmultRadio.hashtag():
+        case items.addmultRadio:
           addEvent(active, 'click', _this.multradioBoxCreat, _this);
           break;
-        case items.exportDate.hashtag():
+        case items.exportDate:
           addEvent(active, 'click', _this.exportData, _this);
+          break;
+        default :
           break;
       }
       
@@ -162,12 +167,12 @@
         addEvent(_li[0].children[0], 'click', active.removeItem, _li);
         _li.append(divDrag.clone().text('drag'));
         _li.append(divTxt.clone().append($('<textarea rows="2"/>')
-          .addClass('formtextInput singleline').val('單欄位輸入')));
-        _li.append(divHide.clone().addClass('single')
-          .append($('<textarea rows="1" placeholder="請輸入你的內容..."/>')
-          .addClass('formtextInput singleinput ')));
+          .addClass('formtextInput singleline').val('問題描述(單欄位)')));
+        // _li.append(divHide.clone().addClass('single')
+        //   .append($('<textarea rows="1" placeholder="請輸入你的內容..."/>')
+        //   .addClass('formtextInput singleinput ')));
         _li.appendTo($(rootNode));
-        addEvent( _li.find(items.contentClass.dot())[0],'click', active.bildingOToggleWin, _li.find(items.contentClass.dot())[0]);
+        // addEvent( _li.find(items.contentClass.dot())[0],'click', active.bildingOToggleWin, _li.find(items.contentClass.dot())[0]);
       }else alert('請先建立/選擇群組在新增內容!!');   
 
     },
@@ -180,12 +185,12 @@
         addEvent(_li[0].children[0], 'click', active.removeItem, _li);
         _li.append(divDrag.clone().text('drag'));
         _li.append(divTxt.clone().append($('<textarea rows="2"/>')
-          .addClass('formtextInput singleline').val('多欄位輸入')));
-        _li.append(divHide.clone()
-          .append($('<textarea rows="4" placeholder="請輸入你的內容..."/>')
-          .addClass('formtextInput singleinput ')));
+          .addClass('formtextInput singleline').val('問題描述(多欄位)')));
+        // _li.append(divHide.clone()
+        //   .append($('<textarea rows="4" placeholder="請輸入你的內容..."/>')
+        //   .addClass('formtextInput singleinput ')));
         _li.appendTo($(rootNode));
-        addEvent( _li.find(items.contentClass.dot())[0],'click', active.bildingOToggleWin, _li.find(items.contentClass.dot())[0]);
+        // addEvent( _li.find(items.contentClass.dot())[0],'click', active.bildingOToggleWin, _li.find(items.contentClass.dot())[0]);
       }else alert('請先建立/選擇群組在新增內容!!'); 
     },
     radioBoxCreat:function(active){
@@ -197,11 +202,11 @@
         addEvent(_li[0].children[0], 'click', active.removeItem, _li);
         _li.append(divDrag.clone().text('drag'));
         _li.append(divTxt.clone().append($('<textarea rows="2"/>')
-          .addClass('formtextInput singleline').val('單選題型')));
+          .addClass('formtextInput singleline').val('問題描述(單選題)')));
         _li.append(divHide.clone());
         _li.find('.answer').append(active.subTextareaCreate(_li.find('.answer')[0], active));
         _li.appendTo($(rootNode));
-        addEvent( _li.find(items.contentClass.dot())[0],'click', active.bildingOToggleWin, _li.find(items.contentClass.dot())[0]);
+        // addEvent( _li.find(items.contentClass.dot())[0],'click', active.bildingOToggleWin, _li.find(items.contentClass.dot())[0]);
       }else alert('請先建立/選擇群組在新增內容!!'); 
     },
     checkBoxCreat:function(active){
@@ -213,11 +218,11 @@
         addEvent(_li[0].children[0], 'click', active.removeItem, _li);
         _li.append(divDrag.clone().text('drag'));
         _li.append(divTxt.clone().append($('<textarea rows="4"/>')
-          .addClass('formtextInput singleline').val('多選題型')));
+          .addClass('formtextInput singleline').val('問題描述(多選題)')));
         _li.append(divHide.clone());
         _li.find('.answer').append(active.subTextareaCreate(_li.find('.answer')[0], active));
         _li.appendTo($(rootNode));
-        addEvent( _li.find(items.contentClass.dot())[0],'click', active.bildingOToggleWin, _li.find(items.contentClass.dot())[0]);
+        // addEvent( _li.find(items.contentClass.dot())[0],'click', active.bildingOToggleWin, _li.find(items.contentClass.dot())[0]);
       }else alert('請先建立/選擇群組在新增內容!!'); 
       
     },
@@ -230,7 +235,7 @@
         addEvent(_li[0].children[0], 'click', active.removeItem, _li);
         _li.append(divDrag.clone().text('drag'));
         _li.append(divTxt.clone().append($('<textarea rows="2"/>')
-          .addClass('formtextInput singleline').val('李克特量表')));
+          .addClass('formtextInput singleline').val('問題描述(李克特量表)')));
         _li.append(divHide.clone());
         lists.map(function(val, i){
           _select.append($('<option value="'+val+'">'+val+'</option>'))
@@ -243,20 +248,20 @@
         }).appendTo(_li.find('.answerwrap'));
         _li.find('.answerwrap').append(_select);
         _li.appendTo($(rootNode));
-        addEvent( _li.find(items.contentClass.dot())[0],'click', active.bildingOToggleWin, _li.find(items.contentClass.dot())[0]);
+        // addEvent( _li.find(items.contentClass.dot())[0],'click', active.bildingOToggleWin, _li.find(items.contentClass.dot())[0]);
       }else alert('請先建立/選擇群組在新增內容!!'); 
     },
     subTextareaCreate: function(target ,active){
       var nodes=$('<div class="answerwrap"/>'),
           addCreate=$(createEl('div', ['icon-add', 'answer-add'])).append($(createEl('i', ['material-icons', 'icon-small', 'icon-color'])).text('create')),
           delCreate=$(createEl('div', ['icon-del', 'answer-del'])).append($(createEl('i', ['material-icons', 'icon-small', 'icon-color'])).text('delete'));
-      var quiz=new quizsBox();
 
       if (active === undefined){
-        addEvent(addCreate[0], 'click', quiz.subTextareaCreate, target);
-        addEvent(delCreate[0], 'click', quiz.removeItem, target.lastChild);
+        var quiz=new quizsBox();
         nodes.append(delCreate);
-        nodes.append(addCreate);
+        nodes.append(addCreate.clone());
+        addEvent(nodes.find('.icon-add')[0], 'click', quiz.subTextareaCreate, target);
+        addEvent(delCreate[0], 'click', quiz.removeItem, target.lastChild);
         nodes.append($('<label/>', {
           class: 'text answer-title',
           for: 'answer',
@@ -268,10 +273,10 @@
           placeholder: '請輸入你的選項... '
         })).appendTo(target);
       }else{
-        addEvent(addCreate[0], 'click', active.subTextareaCreate, target);
-        addEvent(delCreate[0], 'click', active.removeItem, target.children);
         nodes.append(delCreate);
-        nodes.append(addCreate);
+        nodes.append(addCreate.clone());
+        addEvent(nodes.find('.icon-add')[0], 'click', active.subTextareaCreate, target);
+        addEvent(delCreate[0], 'click', active.removeItem, target.children);
         nodes.append($('<label/>', {
           class: 'text answer-title',
           for: 'answer',
@@ -298,14 +303,21 @@
     hideShowTrashbin:function(target){
       classie.toggle(target, 'showout');
     },
-    bildingOToggleWin: function(target){ //content open/close
-      classie.toggle(target.nextElementSibling, 'detail-showout');
-    },
+    // bildingOToggleWin: function(target){ //content open/close
+    //   classie.toggle(target.nextElementSibling, 'detail-showout');
+    // },
     removeItem: function(item){
       var e = typeof item[0] ==='object' ? e=item[0] : e=item;
 
       e.parentElement.children.length-1 > 0 ? item.remove(): 
         alert('題目無法全部刪除!');
+    },
+    sideBarAnimate: function(target){
+      var objHeight=document.getElementsByTagName('header')[0].offsetHeight;
+      // if(window.scrollY > objHeight) $('#sidebar').addClass('showout'); //only show the sidebar after scroll down below banner 
+      // else $('#sidebar').removeClass('showout'); 
+      target.stop()
+        .animate({"marginTop": ($(window).scrollTop() + 30) + "px"}, "slow" );
     },
     serialize: function(){
       var quizstype=['group_title', 'group_seq', 'is_base_info', 'questions'], 
