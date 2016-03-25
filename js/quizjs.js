@@ -72,6 +72,7 @@
         var txtarray=val.id.slice(0,5);
         _this.creatItemListener(txtarray, val.id.hashtag());
       });
+
       this.w.find($('input[name="quiztype"]')).on('click', function(e){
         if(this.value === 'person'){
           $('.tablehide').removeClass('tablehide');
@@ -82,6 +83,14 @@
           });
         }        
       });
+
+      addEvent(this.v, 'scroll', _this.sideBarAnimate, _sidebar);
+
+      $('a').on('click', function(e){ //remove heperlink function
+        e.preventDefault();
+      })
+
+      /*Demo use Start*/
       $('textarea').each(function(i,v){
           addEvent(v, 'keyup', _this.inputboxAutoExpand, $(v));
         })
@@ -107,11 +116,7 @@
           // })
         }
       }
-      $('a').on('click', function(e){ //remove heperlink function
-        e.preventDefault();
-      })
-
-      addEvent(this.v, 'scroll', _this.sideBarAnimate, _sidebar);
+      /*Demo use End*/
     },
     creatItemListener:function(action, addbtn){
       var _this=this, active=$(addbtn)[0];
@@ -151,7 +156,7 @@
         row: 1,
         value: '題組名稱'
       }))).appendTo(section);
-      section.find('.hgtitle').append(iconRemove);
+      section.find('.hgtitle').append(iconRemove.clone());
       addEvent(section.find('.hgtitle')[0], 'mouseenter', active.hideShowTrashbin, section.find('.hgtitle')[0].childNodes[1]); 
       addEvent(section.find('.hgtitle')[0], 'mouseleave', active.hideShowTrashbin, section.find('.hgtitle')[0].childNodes[1]); 
       addEvent(section[0], 'click', active.bildingSelected, section[0]);
@@ -267,35 +272,12 @@
           addCreate=$(createEl('div', ['icon-add', 'answer-add'])).append($(createEl('i', ['material-icons', 'icon-small', 'icon-color'])).text('create')),
           delCreate=$(createEl('div', ['icon-del', 'answer-del'])).append($(createEl('i', ['material-icons', 'icon-small', 'icon-color'])).text('delete'));
 
-      var bindingAddE= function(el, fn, tg){
-        target !== undefined ?
-          addEvent(el, 'click', fn, tg) :
-          addEvent(el, 'click', fn)
-
-      }
-      if (active === undefined){
-        nodes.append(delCreate);
-        nodes.append(addCreate.clone());
-        addEvent(nodes.find('.icon-add')[0], 'click', this.subTextareaCreate, target);
-        addEvent(delCreate[0], 'click', this.removeItem, target.lastChild);
-        nodes.append($('<label/>', {
-          class: 'text answer-title',
-          for: 'answer',
-          text: '選項: '
-        }))
-        nodes.append($('<input/>', {
-          class: 'select answer-input',
-          type: 'text',
-          placeholder: '請輸入你的選項... '
-        })).appendTo(target);
-      }else{
         nodes.append(delCreate);
         nodes.append(addCreate.clone());
         // addEvent(nodes.find('.icon-add')[0], 'click', active.subTextareaCreate, target);
         nodes.find('.icon-add').on('click', function(){
-          active.subTextareaCreate(target);
+          active.subTextareaCreate(target, active);
         });
-        addEvent(delCreate[0], 'click', active.removeItem, target.children);
         nodes.append($('<label/>', {
           class: 'text answer-title',
           for: 'answer',
@@ -306,7 +288,7 @@
           type: 'text',
           placeholder: '請輸入你的選項... '
         })).appendTo(target);
-      };
+        addEvent(delCreate[0], 'click', active.removeItem, nodes);
     },
     bildingSelected:function(e){ //select group
       var _this=e;
@@ -323,7 +305,8 @@
       target.css('height', 'auto').css('height', target[0].scrollHeight + offset);
     },
     hideShowTrashbin:function(target){
-      classie.toggle(target, 'showout');
+      $(target).toggleClass('showout');
+      
     },
     // bildingOToggleWin: function(target){ //content open/close
     //   classie.toggle(target.nextElementSibling, 'detail-showout');
