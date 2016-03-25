@@ -5,6 +5,7 @@ h1, h2, h3, h4, body{
 
 :root{
     background: hsl(180, 80%, 90%);
+    font-family: '微軟正黑體', '標楷體', sans-serif;
 }
 
 .container {
@@ -101,7 +102,7 @@ h1, h2, h3, h4, body{
 
 .formtextInput {
     margin: 0;
-    max-height: 2em;
+    min-height: 1.5em;
     border: none;
     background: transparent;
     line-height: 24px;
@@ -111,8 +112,10 @@ h1, h2, h3, h4, body{
     outline: none;
     flex-shrink: 1;
     font: 400 1em '微軟正黑體', '標楷體', sans-serif;
-    overflow-y: visible;
-    overflow-x: hidden;
+    overflow: hidden;
+}
+.formtextInput:focus {
+    background: hsl(0, 0%, 100%);
 }
 
 .formtextInput.titletextarea {
@@ -122,6 +125,7 @@ h1, h2, h3, h4, body{
 }
 
 .formtextInput.subtitletextarea {
+    max-height: 2em;
     font-size: 1.3em;
     width: 100%;
     left: 135%;
@@ -366,11 +370,11 @@ section.dd-handle {
     padding: 5px;
     width: 90%;
     margin: 0.5em;
-    font-size: 2em;
+    font-size: 1.5em;
 }
 .answer{
     margin-top: -5px;
-    height: 130px;
+    min-height: 80px;
     transition: height 1s;
     overflow-y: auto;
     position: relative;
