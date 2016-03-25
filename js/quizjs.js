@@ -267,15 +267,17 @@
           addCreate=$(createEl('div', ['icon-add', 'answer-add'])).append($(createEl('i', ['material-icons', 'icon-small', 'icon-color'])).text('create')),
           delCreate=$(createEl('div', ['icon-del', 'answer-del'])).append($(createEl('i', ['material-icons', 'icon-small', 'icon-color'])).text('delete'));
 
-      var bindingAddE= function(el, fn, target){
-        addEvent();
+      var bindingAddE= function(el, fn, tg){
+        target !== undefined ?
+          addEvent(el, 'click', fn, tg) :
+          addEvent(el, 'click', fn)
+
       }
       if (active === undefined){
-        var quiz=new quizsBox();
         nodes.append(delCreate);
         nodes.append(addCreate.clone());
-        addEvent(nodes.find('.icon-add')[0], 'click', quiz.subTextareaCreate, target);
-        addEvent(delCreate[0], 'click', quiz.removeItem, target.lastChild);
+        addEvent(nodes.find('.icon-add')[0], 'click', this.subTextareaCreate, target);
+        addEvent(delCreate[0], 'click', this.removeItem, target.lastChild);
         nodes.append($('<label/>', {
           class: 'text answer-title',
           for: 'answer',
