@@ -154,7 +154,7 @@
       $('<div class="hgtitle" />').append($('<h1 class="dd-handle" />').append($('<input/>',{
         class: 'formtextInput titletextarea',
         row: 1,
-        value: '題組名稱'
+        value: 'Group'
       }))).appendTo(section);
       section.find('.hgtitle').append(iconRemove.clone());
       addEvent(section.find('.hgtitle')[0], 'mouseenter', active.hideShowTrashbin, section.find('.hgtitle')[0].childNodes[1]); 
@@ -173,9 +173,9 @@
         addEvent(_li[0].children[0], 'click', active.removeItem, _li);
         _li.append(divDrag.clone().text('drag'));
         _li.append(divTxt.clone().append($('<textarea rows="2"/>')
-          .addClass('formtextInput singleline').val('問題描述(單欄位)')));
+          .addClass('formtextInput singleline').val('Question(single-line)')));
         _li.append(divHide.clone().addClass('single')
-          .append($('<textarea rows="1" placeholder="請輸入你的內容..."/>')
+          .append($('<textarea rows="1" placeholder="Comments..."/>')
           .addClass('formtextInput singleinput ')));
         _li.find('textarea').each(function(i,v){
           addEvent(v, 'keyup', active.inputboxAutoExpand, $(v));
@@ -183,7 +183,7 @@
         _li.appendTo($(rootNode));
         active.callingNestable(_li.parent().parent());
         // addEvent( _li.find(items.contentClass.dot())[0],'click', active.bildingOToggleWin, _li.find(items.contentClass.dot())[0]);
-      }else alert('請先建立/選擇群組在新增內容!!');   
+      }else alert('Please select / created group before you create items!!');   
     },
     multInputCreat:function(active){
       var rootNode=active.findParentExites(),
@@ -194,9 +194,9 @@
         addEvent(_li[0].children[0], 'click', active.removeItem, _li);
         _li.append(divDrag.clone().text('drag'));
         _li.append(divTxt.clone().append($('<textarea rows="2"/>')
-          .addClass('formtextInput singleline').val('問題描述(多欄位)')));
+          .addClass('formtextInput singleline').val('Question(muti-line)')));
         _li.append(divHide.clone()
-          .append($('<textarea rows="4" placeholder="請輸入你的內容..."/>')
+          .append($('<textarea rows="4" placeholder="Comments..."/>')
           .addClass('formtextInput singleinput ')));        
         _li.find('textarea').each(function(i,v){
           addEvent(v, 'keyup', active.inputboxAutoExpand, $(v));
@@ -204,7 +204,7 @@
         _li.appendTo($(rootNode));        
         active.callingNestable(_li.parent().parent());
         // addEvent( _li.find(items.contentClass.dot())[0],'click', active.bildingOToggleWin, _li.find(items.contentClass.dot())[0]);
-      }else alert('請先建立/選擇群組在新增內容!!'); 
+      }else alert('Please select / created group before you create items!!'); 
     },
     radioBoxCreat:function(active){
       var rootNode=active.findParentExites(),
@@ -215,13 +215,13 @@
         addEvent(_li[0].children[0], 'click', active.removeItem, _li);
         _li.append(divDrag.clone().text('drag'));
         _li.append(divTxt.clone().append($('<textarea rows="2"/>')
-          .addClass('formtextInput singleline').val('問題描述(單選題)')));
+          .addClass('formtextInput singleline').val('Question(radiobox)')));
         _li.append(divHide.clone());
         active.subTextareaCreate(_li.find('.answer')[0], active);
         _li.appendTo($(rootNode));        
         active.callingNestable(_li.parent().parent());
         // addEvent( _li.find(items.contentClass.dot())[0],'click', active.bildingOToggleWin, _li.find(items.contentClass.dot())[0]);
-      }else alert('請先建立/選擇群組在新增內容!!'); 
+      }else alert('Please select / created group before you create items!!'); 
     },
     checkBoxCreat:function(active){
       var rootNode=active.findParentExites(),
@@ -232,17 +232,17 @@
         addEvent(_li[0].children[0], 'click', active.removeItem, _li);
         _li.append(divDrag.clone().text('drag'));
         _li.append(divTxt.clone().append($('<textarea rows="4"/>')
-          .addClass('formtextInput singleline').val('問題描述(多選題)')));
+          .addClass('formtextInput singleline').val('Question(checkbox)')));
         _li.append(divHide.clone());
         active.subTextareaCreate(_li.find('.answer')[0], active);
         _li.appendTo($(rootNode));        
         active.callingNestable(_li.parent().parent());
         // addEvent( _li.find(items.contentClass.dot())[0],'click', active.bildingOToggleWin, _li.find(items.contentClass.dot())[0]);
-      }else alert('請先建立/選擇群組在新增內容!!'); 
+      }else alert('Please select / created group before you create items!!'); 
       
     },
     multradioBoxCreat:function(active){
-      var rootNode=active.findParentExites(), lists=['滿意', '贊成', '同意', '喜歡'],
+      var rootNode=active.findParentExites(), lists=['Agree', 'Like', 'Approval', 'Satisfacty'],
           _li=$(createEl(items.itemNodeName, items.itemClass)), _select=$('<select name="favorate" class="select answer-input" />');
       if(rootNode){
         _li.attr({'data-type': 0, 'data-attribute': 4, 'data-sequence': 1});
@@ -250,7 +250,7 @@
         addEvent(_li[0].children[0], 'click', active.removeItem, _li);
         _li.append(divDrag.clone().text('drag'));
         _li.append(divTxt.clone().append($('<textarea rows="2"/>')
-          .addClass('formtextInput singleline').val('問題描述(李克特量表)')));
+          .addClass('formtextInput singleline').val('Question(likertScale)')));
         _li.append(divHide.clone());
         lists.map(function(val, i){
           _select.append($('<option value="'+val+'">'+val+'</option>'))
@@ -259,13 +259,13 @@
         $('<label/>', {
           class: 'text answer-title',
           for: 'answer',
-          text: '類型: '
+          text: 'Type: '
         }).appendTo(_li.find('.answerwrap'));
         _li.find('.answerwrap').append(_select);
         _li.appendTo($(rootNode));
         active.callingNestable(_li.parent().parent());
         // addEvent( _li.find(items.contentClass.dot())[0],'click', active.bildingOToggleWin, _li.find(items.contentClass.dot())[0]);
-      }else alert('請先建立/選擇群組在新增內容!!'); 
+      }else alert('Please select / created group before you create items!!'); 
     },
     subTextareaCreate: function(target ,active){
       var nodes=$('<div class="answerwrap"/>'),
@@ -281,12 +281,12 @@
         nodes.append($('<label/>', {
           class: 'text answer-title',
           for: 'answer',
-          text: '選項: '
+          text: 'options: '
         }))
         nodes.append($('<input/>', {
           class: 'select answer-input',
           type: 'text',
-          placeholder: '請輸入你的選項... '
+          placeholder: 'create your selection here... '
         })).appendTo(target);
         addEvent(delCreate[0], 'click', active.removeItem, nodes);
     },
@@ -315,7 +315,7 @@
       var e = typeof item[0] ==='object' ? e=item[0] : e=item;
 
       e.parentElement.children.length-1 > 0 ? item.remove(): 
-        alert('題目無法全部刪除!');
+        alert('Group can not be empty!');
     },
     callingNestable: function(target){
       target.nestable();
