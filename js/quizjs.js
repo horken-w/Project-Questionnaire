@@ -43,7 +43,7 @@
   var items={
         rootEl: 'root',
         addGroupbtn: 'group',
-        exportDate: 'submit',
+        exportDate: 'submi',
         addSingleline: 'sigle',
         addMultline: 'txtar',
         addRadiobox: 'radio',
@@ -139,7 +139,7 @@
           break;
         case items.addmultRadio:
           addEvent(active, 'click', _this.multradioBoxCreat, _this);
-          break;
+          break;        
         case items.exportDate:
           addEvent(active, 'click', _this.exportData, _this);
           break;
@@ -337,9 +337,29 @@
       //     return sentseq[ind];
       //   }, {});
       // }
-      var objToArr= function(el, array, section){
+      
+      var setAnswer=function(el, isInputbox){
+        var answerBox=[];
+        if(isInputbox){
+          if (el.find('input:checked').length>0){
+            el.find('input:checked').each(function(i, val){
+              var answer={};
+              answer.description=val.parentElement.nextElementSibling.innerText;
+              answer.type=$(val).data('type');
+              answer.attribute=$(val).data('attribute');
+              answer.sequence=$(val).data('sequence');
+              answer.required=true;
+              answer.answers=['female', 'male', 'secret'];
+              answerBox.push(answer);
+            })
+          }
+        }
+        return answerBox;
+      }
+
+      var objToArr= function(el, array, section){ //personal detail
         var obj={};
-        if(!section){
+        if(section){
           array.reduce(function(val, i) {
             if (el.data(i)!==undefined) 
               obj[i] = el.data(i); 
@@ -347,6 +367,7 @@
               obj[i] = [];
             return obj;
           }, {});
+          obj.group_title=el.find('h1> input').val();
         }else{
           array.reduce(function(val, i) {
             if (el.data(i)!==undefined) 
@@ -355,21 +376,15 @@
               obj[i] = [];
             return obj;
           }, {});
-          obj.group_title=$(el).find('h1>input').val();
+          obj.group_title='個人資料';
         }        
         return obj;
       };
-      var setAnswer=function(el){
-        var answer;
-        $(el).find('input').each(function(i, val){
-          answer=val.value;
-        })
-        return answer;
-      }
-      var setQuestion=function(el, array){
-        var obj={}, arraylist=array, nodes=el.find('.dd-item');
+
+      var setQuestion=function(el, array){ //question detail
+        var objBox=[], arraylist=array, nodes=el.find('.dd-item');
         for(var i=0; i<nodes.length; i++){
-          var node=nodes[i];
+          var node=nodes[i],obj={};
           array.reduce(function(val, inx) {
             if ($(node).data(inx)!==undefined) 
               obj[inx] = $(node).data(inx); 
@@ -378,11 +393,25 @@
             return obj;
           }, {});
           obj.description=$(node).find('textarea:first')[0].value;
-          obj.request=1;
-          if(obj.attribute === 2 || obj.attribute === 3 || obj.attribute === 4) 
-            obj.answers.push(setAnswer(node));
+          obj.required=true;
+          if(obj.attribute === 2 || obj.attribute === 3 || obj.attribute === 4){
+            switch (obj.attribute){
+              case 2:
+              case 3:
+                var e=[];
+                $(node.childNodes[3].children).each(function(i, v){
+                 e.push($(v).find('input').val());
+                })
+                 obj.answers=e;
+                break;
+              case 4:
+                obj.typeOfScale=el.find('select option:selected').val();
+                break;
+            }            
+          }             
+          objBox.push(obj);
         }
-        return obj;
+        return objBox;
       };
 
       sentseq['title']=formpaper[0].value;
@@ -390,10 +419,11 @@
       sentseq['footer']=formpaper[2].value;
       sentseq['target']=document.querySelector('input[name="quiztype"]:checked').value;
       sentseq['groups']=[];
-      sentseq['groups'].push(objToArr($('.group'), quizstype));
+      sentseq['groups'].push(objToArr($('.pr-group'), quizstype, false));
+      sentseq.groups[0].questions=setAnswer($('.pr-table'), group);
       $('section.group').map(function(i, val){
         sentseq['groups'].push(objToArr($(val), quizstype, true));        
-        sentseq.groups[i].questions.push(setQuestion($(val), group));        
+        sentseq.groups[i+1].questions=setQuestion($(val), group);        
       })
 
       console.log(sentseq);
