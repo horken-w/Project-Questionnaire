@@ -425,7 +425,7 @@
         sentseq['groups'].push(objToArr($(val), quizstype, true));        
         sentseq.groups[i+1].questions=setQuestion($(val), group);        
       })
-
+      //localStorage.setItem('quiz', JSON.stringify(sentseq));
       console.log(sentseq);
     },
     exportData: function(tooling){
@@ -435,6 +435,13 @@
 
 
   $(function(){
+    // $.ajaxSetup({async: false});
+    // let avaliable=false, _data, dataurl= './questionnaire/quizfile.json';
+    // $.getJSON(dataurl, function(data){ _data=data; avaliable=true;})
+    //  .fail(function(){
+    //    avaliable=false;
+    // });
+
     var quiz=new quizsBox('#root');
       quiz.callingNestable($('.formfields'));
   })
