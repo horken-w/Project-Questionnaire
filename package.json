@@ -1,0 +1,31 @@
+{
+  "name": "questionnaite_ver_1",
+  "version": "1.0.0",
+  "description": "Simple fake google quiz form",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/horkenw/projectQuestionnaire.git"
+  },
+  "keywords": [
+    "quiz",
+    "form",
+    "scrollable"
+  ],
+  "author": "horken",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/horkenw/projectQuestionnaire/issues"
+  },
+  "homepage": "https://github.com/horkenw/projectQuestionnaire#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.8",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-uglify": "^2.1.2",
+    "gulp-useref": "^3.1.2"
+  }
+}
