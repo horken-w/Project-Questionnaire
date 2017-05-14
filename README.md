@@ -5,4 +5,4 @@ Programing
 
 [Demo][1]
 
-[1]: http://horkenw.github.io/questionary/ "Questionnaire Form"
+[1]: http://horkenw.github.io/ "Questionnaire Form"
